@@ -1,10 +1,3 @@
-<div>
-    <link href="../libs/bootstrap/css/bootstrap.min.slate.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
-    <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../libs/bootstrap/js/jquery.min.js"></script>
-    <script src="../js/index.js"></script>
-</div>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -12,16 +5,16 @@
                 <div class="pass-reset">
                     <label>Insira o email cadastrado</label>
                     <input type="email" placeholder="Email" />
-                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                    <input type="submit" value="Recuperar Senha" class="pass-reset-submit btn btn-success btn-sm" />
                 </div>
             </div>
             <div class="wrap">
-                <p class="form-title">
-                    Entrar</p>
-                <form method="POST" class="login">
-                    <input type="text" class="loginInfo" placeholder="Email ou login"/>
-                    <input type="password" class="loginInfo" placeholder="Senha" />
-                    <input type="submit" value="Sign In" class="btn btn-success btn-sm" />
+                <p class="form-title">Corridas</p>
+                <form method="POST" class="login" action="javascript:void(0)">
+                    <input type="text" class="loginInfo" id="emailLogin" placeholder="Email ou login"/>
+                    <input type="password" class="loginInfo" id="passwordLogin" placeholder="Senha" />
+                    <small id="loginErrorMsg" class="help-block">Dados inválidos</small>
+                    <button type="submit" data-loading-text="Entrar..." onclick="validateLogin();" id="btnLogin" class="btn btn-success col-xs-12">ENTRAR <img src="../images/loader/facebook.gif" id="loginLoader"></button>
                     <div class="remember-forgot">
                         <div class="row">
                             <div class="col-md-6 forgot-pass-content">

@@ -27,6 +27,11 @@ class Runner {
      * @Column(type="string")
      * * */
     private $login;
+    
+    /**
+     * @Column(type="string")
+     * * */
+    private $password;
 
     /**
      * @Column(type="string")
@@ -68,6 +73,10 @@ class Runner {
     public function getLogin() {
         return $this->login;
     }
+    
+    public function getPassword(){
+        return $this->password;
+    }
 
     public function getName() {
         return $this->name;
@@ -99,6 +108,10 @@ class Runner {
 
     public function setLogin($login) {
         $this->login = $login;
+    }
+    
+    public function setPassword($password){
+        $this->password = $password;
     }
 
     public function setName($name) {
