@@ -77,7 +77,7 @@ form.login .forgot-pass-content{
 form.login label, form.login a{
     font-size: 12px;
     font-weight: 400;
-    color: #FFFFFF;
+    color: #666666;
 }
 
 form.login a{
@@ -85,7 +85,7 @@ form.login a{
 }
 
 form.login a:hover{
-    color: #2ecc71;
+    color: #FFFFFF;
 }
 
 form.login ::-webkit-input-placeholder {
