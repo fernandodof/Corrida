@@ -1,17 +1,11 @@
 body{
-    background: url('../images/alone-runner.jpg') fixed;
+    background: url('../images/alone-runner') fixed;
     background-size: cover;
     padding: 0;
     margin: 0;
 }
 
 .wrap{
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     z-index: 99;
     /*margin-top: -50px;*/
 }
@@ -67,25 +61,25 @@ form.login input[type="submit"]:hover{
 form.login .remember-forgot{
     float: left;
     width: 100%;
-    margin: 10px 0 0 0;
+    margin: 15px 0 0 0;
 }
 form.login .forgot-pass-content{
     min-height: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-form.login label, form.login a{
+/*form.login label, form.login a{
     font-size: 12px;
     font-weight: 400;
-    color: #666666;
-}
+    color: #FFFFFF;
+}*/
 
 form.login a{
     transition: color 0.5s ease;
 }
 
 form.login a:hover{
-    color: #FFFFFF;
+    color: #E33A19;
 }
 
 form.login ::-webkit-input-placeholder {
@@ -103,14 +97,9 @@ form.login input:-moz-placeholder {
 }
 
 .pr-wrap{
-    width: 100%;
-    height: 100%;
-    min-height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
     z-index: 999;
     display: none;
+    margin-top: -150px;
 }
 
 .show-pass-reset{
@@ -120,7 +109,6 @@ form.login input:-moz-placeholder {
 .pass-reset{
     margin: 0 auto;
     width: 350px;
-    position: relative;
     z-index: 999;
     background: #FFFFFF;
     padding: 20px 15px;
@@ -134,32 +122,32 @@ form.login input:-moz-placeholder {
 }
 
 /* Extra Small Devices, Phones */ 
-@media only screen and (min-width : 480px) {
+/*@media only screen and (min-width : 480px) {
     .pass-reset{
-        margin-top: 260px;
+        margin-top: 265px;
     }
 }
 
-/* Small Devices, Tablets */
+ Small Devices, Tablets 
 @media only screen and (min-width : 768px) {
     .pass-reset{
-        margin-top: 275px;
+        margin-top: 285px;
     }
 }
 
-/* Medium Devices, Desktops */
+ Medium Devices, Desktops 
 @media only screen and (min-width : 992px) {
     .pass-reset{
         margin-top: 290px;
     }
 }
 
-/* Large Devices, Wide Screens */
+ Large Devices, Wide Screens 
 @media only screen and (min-width : 1200px) {
     .pass-reset{
         margin-top: 300px;
     }
-}
+}*/
 
 
 .pass-reset label{

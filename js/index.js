@@ -29,7 +29,7 @@ function validateLogin() {
 }
 
 $(document).ready(function () {
-    $('.forgot-pass').click(function (event) {
+    $('#forgortPass').click(function (event) {
         $(".pr-wrap").toggleClass("show-pass-reset");
     });
 
