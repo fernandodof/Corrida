@@ -20,7 +20,7 @@
                         <a href="dashboard"><i class="fa fa-fw fa-table"></i> Corridas</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-plus"></i> Nova Corrida</a>
+                        <a href="newActivity"><i class="fa fa-fw fa-plus"></i> Nova Corrida</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-fw fa-search"></i> Pesquisar</a>
