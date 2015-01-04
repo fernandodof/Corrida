@@ -44,6 +44,39 @@ function convertToMinutes(str) {
     return seconds;
 }
 
+function submitNewRunForm() {
+    var date = $('#runDate').val();
+    var time = $('#time').val();
+    var distance = $('#distance').val();
+    var notes = $('#notes').val();
+    var avgSpeed = $('#avgSpeed').val();
+    var avgPace = $('#avgSpeed').val();
+    
+    var data = {date : date, time: time, distance: distance, notes : notes, avgSpeed : avgSpeed, avgPace: avgPace};
+    
+    $('#loader').show();
+
+    var url = '../src/app/ajaxReceivers/addNewRun.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse === '1') {
+                alertify.alert('Nova Corrida adicionada com sucesso');
+            } else {
+                $('#loader').hide();
+                alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
+            }
+        },
+        error: function (data) {
+            alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
+        }
+    });
+
+
+}
 
 function setUpFormValidation() {
 
@@ -100,20 +133,42 @@ function setUpFormValidation() {
             },
             distance: {
                 validators: {
-                    notEmpty: {
-                        message: 'Informe a distancia'
-                    },
                     invalidDistance: {
                         message: 'formato iválido (ex: 8 ou 4.50)'
+                    },
+                    notEmpty: {
+                        message: 'Informe a distancia'
+                    }
+                }
+            },
+            notes: {
+                validators: {
+                    stringLength: {
+                        max: 300,
+                        message: 'Insira no máximo 300 caracteres'
                     }
                 }
             }
         }
-    }).on('success.form.bv', function (e) {
-        alert('OK');
-    });
+    }).on('error.validator.bv', function (e, data) {
+        // $(e.target)    --> The field element
+        // data.bv        --> The BootstrapValidator instance
+        // data.field     --> The field name
+        // data.element   --> The field element
+        // data.validator --> The current validator name
 
+        data.element
+                .data('bv.messages')
+                // Hide all the messages
+                .find('.help-block[data-bv-for="' + data.field + '"]').hide()
+                // Show only message associated with current validator
+                .filter('[data-bv-validator="' + data.validator + '"]').show();
+    }).on('success.form.bv', function (e) {
+        e.preventDefault();
+        submitNewRunForm();
+    });
 }
+
 
 function revalidateTime() {
     $('#newRunForm').bootstrapValidator('revalidateField', 'time');
@@ -132,17 +187,6 @@ $(document).ready(function () {
     }).on('changeTime.timepicker', function (e) {
         $('#newRunForm').bootstrapValidator('revalidateField', 'time');
     });
-
-
-//    $('#sandbox-container .input-group.date').datepicker({
-//        todayBtn: "linked",
-//        language: "pt-BR",
-//        autoclose: true,
-//        todayHighlight: true,
-//        format: "dd/mm/yyyy"
-//    }).on('changeDate', function (e) {
-//        $('#newRunForm').bootstrapValidator('revalidateField', 'runDate');
-//    });
 
 
     $('#runDate').pickadate({

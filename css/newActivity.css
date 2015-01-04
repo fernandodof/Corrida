@@ -19,7 +19,7 @@
 }
 
 #distance-container{
-    width: 230px;
+    width: 125px;
 }
 
 #distance{
@@ -42,6 +42,7 @@
 
 #save{
     margin-right: 15px;
+    height: 54px;
 }
 
 #run-info{
@@ -72,4 +73,8 @@
 
 #newRunForm .has-feedback .form-control-feedback {
     top: 8px;
+}
+
+#loader{
+    display: none;
 }

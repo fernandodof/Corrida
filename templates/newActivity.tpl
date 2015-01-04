@@ -47,25 +47,25 @@
                                         <div class="form-group pull-left form-group-lg">
                                             <input type="text" name="distance" id="distance" onkeyup="calculateSpeedPace();" pattern="[0-9]+([\.|,][0-9]+)?" oninvalid="setCustomValidity('Distancia Invalida')" class="form-control">
                                         </div>
-                                        <div class="pull-left" id="distance-radio-btn">
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" checked onclick="calculateSpeedPace();" name="distanceUnit" value="k" /> Km
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" onclick="calculateSpeedPace();" name="distanceUnit" value="m" /> Metros
-                                                </label>
-                                            </div>
-                                        </div>                                    
+                                    </div>
+                                    <div class="pull-left" id="distance-radio-btn">
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" checked onclick="calculateSpeedPace();" name="distanceUnit" value="k" /> Km
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" onclick="calculateSpeedPace();" name="distanceUnit" value="m" /> Metros
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group-lg" id="notesGroup">
+                                <div class="form-group form-group-lg" id="notesGroup">
                                     <textarea name="notes" placeholder="Observações" id="notes" class="form-control"></textarea>
                                 </div>
-                                <input type="submit" class="btn btn-success btn-lg pull-right" id="save" value="Salvar">
+                                <button type="submit" class="btn btn-success btn-lg pull-right" id="save">Salvar <span id="loader"><img src="../images/loader/loginLoader.gif"></span></button>
                             </form>
                             <div id="run-info">
                                 <div class="pull-left">
@@ -79,7 +79,7 @@
                                         <input type="text" id="avgPace" readonly class="form-control">
                                     </div>
                                 </div>
-{*                                <img src="../images/runer.svg" id="running-icon" class="img-responsive">*}
+                                {*                                <img src="../images/runer.svg" id="running-icon" class="img-responsive">*}
 
                             </div>
                         </div>
