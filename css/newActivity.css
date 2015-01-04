@@ -69,3 +69,7 @@
 .group{
     margin-bottom: 15px;
 }
+
+#newRunForm .has-feedback .form-control-feedback {
+    top: 8px;
+}

@@ -41,26 +41,20 @@ function convertToMinutes(str) {
 
 
 function setUpFormValidation() {
-    
-        $.fn.bootstrapValidator.validators.invalidTime = {
+
+    $.fn.bootstrapValidator.validators.invalidTime = {
         validate: function (validator, $field, options) {
             var value = $field.val();
 
-            if (convertToSeconds(value)<=0) {
+            if (convertToSeconds(value) <= 0) {
                 return false;
             }
 
             return true;
         }
     };
-    
-    
+
     $('#newRunForm').bootstrapValidator({
-        feedbackIcons: {
-            valid: '',
-            invalid: '',
-            validating: ''
-        },
         fields: {
             runDate: {
                 validators: {
@@ -73,31 +67,46 @@ function setUpFormValidation() {
                     }
                 }
             },
-            time:{
+            time: {
                 validators: {
-                    notEmpty:{
-                        message : 'O tempo é obrigatório'
+                    notEmpty: {
+                        message: 'O tempo é obrigatório'
                     },
                     regexp: {
                         regexp: /^[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$/,
                         message: 'Tempo inválido'
                     },
-                    invalidTime:{
+                    invalidTime: {
                         message: 'Tempo inválido'
                     }
                 }
             }
         }
     }).on('success.form.bv', function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
         subscribe();
     });
 
 }
 
+function revalidateTime() {
+    $('#newRunForm').bootstrapValidator('revalidateField', 'time');
+}
+
 $(document).ready(function () {
 
     setUpFormValidation();
+
+    $('#time').timepicker({
+        showMeridian: false,
+        defaultTime: '00:00:00',
+        showSeconds: true,
+        minuteStep: 1,
+        secondStep: 1
+    }).on('changeTime.timepicker', function (e) {
+        $('#newRunForm').bootstrapValidator('revalidateField', 'time');
+    });
+
 
     $('#sandbox-container .input-group.date').datepicker({
         todayBtn: "linked",
@@ -108,16 +117,6 @@ $(document).ready(function () {
     }).on('changeDate', function (e) {
         $('#newRunForm').bootstrapValidator('revalidateField', 'runDate');
     });
-
-
-    $('#time').timepicker({
-        showMeridian: false,
-        defaultTime: '00:00:00',
-        showSeconds: true,
-        minuteStep: 1,
-        secondStep: 1
-    });
-
 
     $("input[name='distanceUnit']").on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed check ', function (event) {
         if (event.type === "ifChecked") {

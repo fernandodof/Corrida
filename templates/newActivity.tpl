@@ -43,7 +43,7 @@
                                     <label id="lbDistancia">Distância: </label>
                                     <div id="distance-container" class="col-xs-12 row pull-left">
                                         <div class="form-group pull-left form-group-lg">
-                                            <input type="text" name="distance" id="distance" onkeyup="calculateSpeedPace();" pattern="[0-9]+([\.|,][0-9]+)?" oninvalid="setCustomValidity('Distancia Invalida')" class="form-control" value="0">
+                                            <input type="text" name="distance" id="distance" onkeyup="calculateSpeedPace();" pattern="[0-9]+([\.|,][0-9]+)?" oninvalid="setCustomValidity('Distancia Invalida')" class="form-control">
                                         </div>
                                         <div class="pull-left" id="distance-radio-btn">
                                             <div class="radio">
