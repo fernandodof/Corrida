@@ -1,11 +1,13 @@
-<link href="../libs/bootstrap-datepicker-1.3.1/css/datepicker3.css" rel="stylesheet">
+<link href="../libs/pickadate.js-3.5.3/lib/compressed/themes/default.css" rel="stylesheet">
+<link href="../libs/pickadate.js-3.5.3/lib/compressed/themes/default.date.css" rel="stylesheet">
 <link href="../libs/bootstrap-3-timepicker-0.2.5/css/bootstrap-timepicker.min.css" rel="stylesheet">
 <link href="../libs/iCheck-1.0.2/skins/square/blue.css" rel="stylesheet">
 <link href="../css/newActivity.css" rel="stylesheet">
-<script src="../libs/bootstrap-datepicker-1.3.1/js/bootstrap-datepicker.js"></script>
+<script src="../libs/pickadate.js-3.5.3/lib/compressed/picker.js"></script>
+<script src="../libs/pickadate.js-3.5.3/lib/compressed/picker.date.js"></script>
 <script src="../libs/bootstrap-3-timepicker-0.2.5/js/bootstrap-timepicker.min.js"></script>
 <script src="../libs/iCheck-1.0.2/icheck.min.js"></script>
-<script src="../libs/bootstrap-datepicker-1.3.1/js/locales/bootstrap-datepicker.pt-BR.js" charset="UTF-8"></script>
+<script src="../libs/pickadate.js-3.5.3/lib/compressed/translations/pt_BR.js" charset="UTF-8"></script>
 <script src="../js/newActivity.js"></script>
 <div id="page-wrapper">
 
@@ -29,7 +31,7 @@
                                 <div class="col-md-7">
                                     <div id="sandbox-container" class="form-group">
                                         <div class="form-group-lg input-group date">
-                                            <input type="text" id="runDate" name="runDate" placeholder="Data da corrida" class="input-lg form-control"><span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
+                                            <input type="text" id="runDate" name="runDate" placeholder="Data da corrida" class="input-lg form-control"><span class="clendar-icon input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
                                         </div>
                                     </div>
 

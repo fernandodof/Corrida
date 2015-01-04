@@ -27,6 +27,11 @@ function validateTime(str) {
     return pattern.test(str);
 }
 
+function validateDistance(str) {
+    var pattern = new RegExp('^[0-9]+((\.|\,){1}[0-9]{0,2})?$');
+    return pattern.test(str);
+}
+
 function convertToSeconds(str) {
     var timeArray = str.split(':');
     var seconds = (+timeArray[0]) * 60 * 60 + (+timeArray[1]) * 60 + (+timeArray[2]);
@@ -47,6 +52,18 @@ function setUpFormValidation() {
             var value = $field.val();
 
             if (convertToSeconds(value) <= 0) {
+                return false;
+            }
+
+            return true;
+        }
+    };
+
+    $.fn.bootstrapValidator.validators.invalidDistance = {
+        validate: function (validator, $field, options) {
+            var value = $field.val();
+
+            if (!validateDistance(value)) {
                 return false;
             }
 
@@ -80,11 +97,20 @@ function setUpFormValidation() {
                         message: 'Tempo inválido'
                     }
                 }
+            },
+            distance: {
+                validators: {
+                    notEmpty: {
+                        message: 'Informe a distancia'
+                    },
+                    invalidDistance: {
+                        message: 'formato iválido (ex: 8 ou 4.50)'
+                    }
+                }
             }
         }
     }).on('success.form.bv', function (e) {
-        e.preventDefault();
-        subscribe();
+        alert('OK');
     });
 
 }
@@ -108,14 +134,38 @@ $(document).ready(function () {
     });
 
 
-    $('#sandbox-container .input-group.date').datepicker({
-        todayBtn: "linked",
-        language: "pt-BR",
-        autoclose: true,
-        todayHighlight: true,
-        format: "dd/mm/yyyy"
-    }).on('changeDate', function (e) {
+//    $('#sandbox-container .input-group.date').datepicker({
+//        todayBtn: "linked",
+//        language: "pt-BR",
+//        autoclose: true,
+//        todayHighlight: true,
+//        format: "dd/mm/yyyy"
+//    }).on('changeDate', function (e) {
+//        $('#newRunForm').bootstrapValidator('revalidateField', 'runDate');
+//    });
+
+
+    $('#runDate').pickadate({
+        format: 'dd/mm/yyyy',
+        formatSubmit: 'dd/mm/yyyy',
+        hiddenName: true,
+        clear: 'limpar',
+        close: 'fechar'
+    });
+
+    $('#runDate').pickadate('picker').on('render', function () {
         $('#newRunForm').bootstrapValidator('revalidateField', 'runDate');
+    });
+
+    $(".clendar-icon").click(function () {
+        var picker = $("#runDate").pickadate('picker');
+        if (picker.get("open")) {
+            picker.close();
+        }
+        else {
+            picker.open();
+        }
+        event.stopPropagation();
     });
 
     $("input[name='distanceUnit']").on('ifCreated ifClicked ifChanged ifChecked ifUnchecked ifDisabled ifEnabled ifDestroyed check ', function (event) {
@@ -136,9 +186,10 @@ $(document).ready(function () {
         increaseArea: '20%'
     });
 
-//    $("input[name='distanceUnit']").iCheck({
-//        radioClass: 'iradio_square-blue',
-//        increaseArea: '20%'
-//    });
 
+    $('#distance').keypress(function (eve) {
+        if ((eve.which !== 46 || $(this).val().indexOf('.') !== -1) && (eve.which !== 44 || $(this).val().indexOf(',') !== -1) && (eve.which < 48 || eve.which > 57) || (eve.which === 46 && $(this).caret().start === 0)) {
+            eve.preventDefault();
+        }
+    });
 });
