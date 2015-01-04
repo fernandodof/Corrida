@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-#timepicker{
+#time{
     background: white;
     text-align: left;
     border-radius: 5px 0 0 5px;
@@ -34,4 +34,38 @@
 
 #distance-radio-btn .radio{
    margin-left: -15px; 
+}
+
+#notesGroup {
+    padding: 15px;
+}
+
+#save{
+    margin-right: 15px;
+}
+
+#run-info{
+    margin-top: 30px;
+    margin-left: 15px;
+    float: left;
+    width: 100%;
+}
+
+
+#run-info input{
+    width: 220px;
+    background: #337AB7;
+    color: white;
+}
+
+#running-icon{
+    width: 70px;
+    height: 70px;
+    float: left;
+    margin-top: 50px;
+    margin-left: 15px;
+}
+
+.group{
+    margin-bottom: 15px;
 }

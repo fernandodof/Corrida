@@ -24,45 +24,62 @@
                         </div>
                         <div class="panel panel-body">
 
-                            <div class="col-md-7">
-                                <div id="sandbox-container" class="group">
-                                    <div class="form-group form-group-lg input-group date">
-                                        <input type="text" id="runDate" placeholder="Data da corrida" class="input-lg form-control"><span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
+                            <form method="POST" id="newRunForm">
+
+                                <div class="col-md-7">
+                                    <div id="sandbox-container" class="form-group">
+                                        <div class="form-group-lg input-group date">
+                                            <input type="text" id="runDate" name="runDate" placeholder="Data da corrida" class="input-lg form-control"><span class="input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
+                                        </div>
+                                    </div>
+
+                                    <div id="time-container" class="form-group">
+                                        <small> Tempo hh:mm:ss</small>
+                                        <div class="input-group bootstrap-timepicker time">
+                                            <input id="time" type="text" name="time" readonly onchange="calculateSpeedPace();" class="input-lg form-control input-group-addon">
+                                            <span class="input-group-addon"><i class="fa fa-fw fa-clock-o"></i></span>
+                                        </div>
+                                    </div>
+                                    <label id="lbDistancia">Distância: </label>
+                                    <div id="distance-container" class="col-xs-12 row pull-left">
+                                        <div class="form-group pull-left form-group-lg">
+                                            <input type="text" name="distance" id="distance" onkeyup="calculateSpeedPace();" pattern="[0-9]+([\.|,][0-9]+)?" oninvalid="setCustomValidity('Distancia Invalida')" class="form-control" value="0">
+                                        </div>
+                                        <div class="pull-left" id="distance-radio-btn">
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" checked onclick="calculateSpeedPace();" name="distanceUnit" value="k" /> Km
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label>
+                                                    <input type="radio" onclick="calculateSpeedPace();" name="distanceUnit" value="m" /> Metros
+                                                </label>
+                                            </div>
+                                        </div>                                    
                                     </div>
                                 </div>
 
-                                <div id="time-container" class="group">
-                                    <small> Tempo hh:mm:ss</small>
-                                    <div class="form-group form-group-lg input-group bootstrap-timepicker time">
-                                        <input id="timepicker" type="text" class="input-lg form-control input-group-addon">
-                                        <span class="input-group-addon"><i class="fa fa-fw fa-clock-o"></i></span>
+                                <div class="form-group-lg" id="notesGroup">
+                                    <textarea name="notes" placeholder="Observações" id="notes" class="form-control"></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-success btn-lg pull-right" id="save" value="Salvar">
+                            </form>
+                            <div id="run-info">
+                                <div class="pull-left">
+                                    <div class="form-group-lg group">
+                                        <label>Velocidade Média</label>
+                                        <input type="text" id="avgSpeed" readonly class="form-control">
+                                    </div>
+
+                                    <div class="form-group-lg group">
+                                        <label>Rítimo</label>
+                                        <input type="text" id="avgPace" readonly class="form-control">
                                     </div>
                                 </div>
-                                <label id="lbDistancia">Distancia: </label>
-                                <div id="distance-container" class="col-xs-12 row pull-left group">
-                                    <div class="form-group pull-left form-group-lg">
-                                        <input type="text" name="distance" id="distance" class="form-control" value="0">
-                                    </div>
-                                    <div class="pull-left group" id="distance-radio-btn">
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" checked name="distanceUnit" value="k" /> Km
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="distanceUnit" value="m" /> Metros
-                                            </label>
-                                        </div>
-                                    </div>                                    
-                                </div>
+{*                                <img src="../images/runer.svg" id="running-icon" class="img-responsive">*}
 
                             </div>
-
-                            <div class="form-group-lg group">
-                                <textarea name="notes" placeholder="Observações" id="notes" class="form-control"></textarea>
-                            </div>
-
                         </div>
                     </div>
                 </div>
