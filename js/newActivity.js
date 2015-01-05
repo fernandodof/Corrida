@@ -64,6 +64,7 @@ function submitNewRunForm() {
         data: data,
         success: function (serverResponse) {
             if (serverResponse === '1') {
+                resetMyForm($('#newRunForm'));
                 alertify.alert('Nova Corrida adicionada com sucesso');
                 $('#loader').hide();
             } else {
@@ -77,7 +78,13 @@ function submitNewRunForm() {
         }
     });
 
+}
 
+function resetMyForm($form) {
+    $form.find('input:text, input:password, input:file, select, textarea').val('');
+    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+    $('#time').val('00:00:00');
+    $form.data('bootstrapValidator').resetForm();
 }
 
 function setUpFormValidation() {
