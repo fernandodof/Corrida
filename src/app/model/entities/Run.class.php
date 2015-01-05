@@ -29,7 +29,7 @@ class Run {
     private $distance;
 
     /**
-     * @Column(type="integer")
+     * @Column(type="bigint")
      * * */
     private $duration;
 
@@ -52,7 +52,7 @@ class Run {
      * @ManyToOne(targetEntity="Runner", inversedBy="runs")
      * @JoinColumn(name="runner_id", referencedColumnName="id")
      * */
-    private $Runner;
+    private $runner;
 
     public function getId() {
         return $this->id;
@@ -83,7 +83,7 @@ class Run {
     }
 
     public function getRunner() {
-        return $this->Runner;
+        return $this->runner;
     }
 
     public function setId($id) {
@@ -114,8 +114,8 @@ class Run {
         $this->pace = $pace;
     }
 
-    public function setRunner($Runner) {
-        $this->Runner = $Runner;
+    public function setRunner($runner) {
+        $this->runner = $runner;
     }
 
 }

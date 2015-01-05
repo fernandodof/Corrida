@@ -79,6 +79,15 @@ class Dao {
         return $query->getResult();
     }
 
+    public function getListResultOfNamedQueryWithParametersAndLimit($queryInstruction, $params, $start, $amount = 10) {
+        $query = $this->em->createQuery($queryInstruction)->setFirstResult($start)->setMaxResults($amount);
+
+        foreach ($params as $key => $value) {
+            $query->setParameter($key, $value);
+        }
+        return $query->getResult();
+    }
+
     public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
         try {
             $query = $this->em->createQuery($queryInstruction);

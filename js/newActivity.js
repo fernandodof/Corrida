@@ -48,6 +48,10 @@ function submitNewRunForm() {
     var date = $('#runDate').val();
     var time = convertToSeconds($('#time').val());
     var distance = $('#distance').val();
+    if ($('input[name=distanceUnit]:checked').val() === 'm') {
+        distance = distance/1000;
+    }
+
     var notes = $('#notes').val();
     var avgSpeed = $('#avgSpeed').val();
     var avgPace = $('#avgSpeed').val();

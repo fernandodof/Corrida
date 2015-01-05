@@ -17,25 +17,32 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="dashboard">Corridas</a>
-                <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                <div class="collapse navbar-collapse" id="navBar">
-                    <ul class="nav navbar-nav side-nav">
-                        <li class="active">
-                            <a href="dashboard"><i class="fa fa-fw fa-table"></i> Corridas</a>
-                        </li>
-                        <li>
-                            <a href="newActivity"><i class="fa fa-fw fa-plus"></i> Nova Corrida</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-search"></i> Pesquisar</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Cadastro</a>
-                        </li>
-                        <li>
-                            <a href="../pages/logout"><i class="fa fw fa-power-off"></i> Sair</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
+            </div>
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{$smarty.session.name}</a>
+                </li>
+            </ul>    
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse" id="navBar">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="dashboard"><i class="fa fa-fw fa-table"></i> Corridas</a>
+                    </li>
+                    <li>
+                        <a href="newActivity"><i class="fa fa-fw fa-plus"></i> Nova Corrida</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-search"></i> Pesquisar</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-fw fa-user"></i> Cadastro</a>
+                    </li>
+                    <li>
+                        <a href="../pages/logout"><i class="fa fw fa-power-off"></i> Sair</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
         </nav>
