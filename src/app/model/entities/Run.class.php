@@ -29,7 +29,7 @@ class Run {
     private $distance;
 
     /**
-     * @Column(type="time")
+     * @Column(type="integer")
      * * */
     private $duration;
 
@@ -49,7 +49,7 @@ class Run {
     private $pace;
 
     /**
-     * @ManyToOne(targetEntity="Runner", inversedBy="Runs")
+     * @ManyToOne(targetEntity="Runner", inversedBy="runs")
      * @JoinColumn(name="runner_id", referencedColumnName="id")
      * */
     private $Runner;

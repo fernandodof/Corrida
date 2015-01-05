@@ -46,14 +46,14 @@ function convertToMinutes(str) {
 
 function submitNewRunForm() {
     var date = $('#runDate').val();
-    var time = $('#time').val();
+    var time = convertToSeconds($('#time').val());
     var distance = $('#distance').val();
     var notes = $('#notes').val();
     var avgSpeed = $('#avgSpeed').val();
     var avgPace = $('#avgSpeed').val();
-    
-    var data = {date : date, time: time, distance: distance, notes : notes, avgSpeed : avgSpeed, avgPace: avgPace};
-    
+
+    var data = {date: date, time: time, distance: distance, notes: notes, avgSpeed: avgSpeed, avgPace: avgPace};
+
     $('#loader').show();
 
     var url = '../src/app/ajaxReceivers/addNewRun.php';
@@ -65,9 +65,11 @@ function submitNewRunForm() {
         success: function (serverResponse) {
             if (serverResponse === '1') {
                 alertify.alert('Nova Corrida adicionada com sucesso');
+                $('#loader').hide();
             } else {
                 $('#loader').hide();
                 alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
+                alertify.alert(serverResponse);
             }
         },
         error: function (data) {

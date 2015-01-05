@@ -1,5 +1,5 @@
 <?php
-require_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') .'/Restaurantes/vendor/autoload.php';
+require_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') .'/Corrida/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;

@@ -56,10 +56,10 @@ class Runner {
     /**
      * @OneToMany(targetEntity="Run", mappedBy="Runner", fetch="EXTRA_LAZY")
      * */
-    private $Runs;
+    private $runs;
 
     public function __construct() {
-        $this->Runs = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->runs = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId() {
@@ -95,7 +95,7 @@ class Runner {
     }
 
     public function getRuns() {
-        return $this->Runs;
+        return $this->runs;
     }
 
     public function setId($id) {
@@ -130,12 +130,12 @@ class Runner {
         $this->totalTime = $totalTime;
     }
 
-    public function setRuns($Runs) {
-        $this->Runs = $Runs;
+    public function setRuns($runs) {
+        $this->runs = $runs;
     }
 
     public function addRun(Run $run) {
-        $this->Runs->add($run);
+        $this->runs->add($run);
     }
 
 }

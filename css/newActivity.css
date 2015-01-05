@@ -18,6 +18,10 @@
     margin-bottom: 15px;
 }
 
+#runDate{
+    background: white;
+}
+
 #distance-container{
     width: 125px;
 }
