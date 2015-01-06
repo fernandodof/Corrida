@@ -1,20 +1,8 @@
 $(document).ready(function () {
 
-//    $('#runs').dataTable({
-//        "processing": true,
-//        "serverSide": true,
-//        "sServerMethod": "POST",
-//        "ajax": {
-//            "url": "../src/app/ajaxReceivers/runsTablePagination.php",
-//            "data": function (d) {
-//                d.myKey = "myValue";
-//                // d.custom = $('#myInput').val();
-//                // etc
-//            }
-//        }
-//    });
+    $('#first-option').addClass('active');
 
-    $('#runs').dataTable({
+    var table = $('#runs').dataTable({
         language: {
             processing: "Processando...",
             search: "Pesquisar&nbsp;:",
@@ -41,6 +29,8 @@ $(document).ready(function () {
         "bServerSide": true,
         "bRetrieve": true,
         "bPaginate": true,
+        "responsive": true,
+        "scrollX": true,
         "sServerMethod": "POST",
         "sAjaxSource": "../src/app/ajaxReceivers/runsTablePagination.php",
         "aoColumns": [
@@ -49,10 +39,33 @@ $(document).ready(function () {
             {"mData": "duration"},
             {"mData": "avgSpeed"},
             {"mData": "pace"},
-            {"mData": "notes"}
+            {"mData": "notesId", "mRender": function (notesId) {
+                    $('[data-toggle="popover"]').popover();
+                    var strReturn = '';
+                    var notes = notesId.split("|")[0];
+                    var id = notesId.split("|")[1];
+                    if (notes !== null && notes !== "") {
+                        strReturn += "<a href='#' tabindex='0' class='notes-btn t-link' role='button' data-placement='left' data-toggle='popover' data-trigger='focus' title='Observações' data-content='" + notes + "'><span class='fa fa-fw fa-2x fa-paperclip' ></span></a>\n";
+                    }
+                    strReturn += "<a href='#' title='Editar'><span class='fa fa-fw fa-2x fa-edit t-link'></span></a>";
+                    strReturn += "<a href='#' title='Excluir'><span class='fa fa-fw fa-2x fa-trash red-icon t-link'></span></a>\n";
+                    return  strReturn;
+                }}
+        ],
+        "fnDrawCallback": function (oSettings) {
+            $('[data-toggle="popover"]').popover();
+        },
+        "columnDefs": [
+//            {"width": "17%", "targets": 0},
+//            {"width": "5%", "targets": 1},
+//            {"width": "7%", "targets": 2},
+//            {"width": "15%", "targets": 3},
+//            {"width": "12%", "targets": 4}
         ]
     });
 
-
+    var lastIdx = null;
+    
+    $('[data-toggle="popover"]').popover();
 
 });

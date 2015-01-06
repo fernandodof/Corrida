@@ -2,7 +2,7 @@
 
 require_once './src/app//model/persistence/Dao.class.php';
 require_once './src/app/util/Queries.php';
-require_once './src/app/util/TimeFunctions.php';
+require_once './src/app/util/Queries_Builders.php';
 
 setlocale(LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese');
 
@@ -51,28 +51,24 @@ $dao = new Dao();
 //$runner->setName('Fernando de Oliveira Ferreira');
 //
 //$dao->save($runner);
-//
-//$params['id'] = 1;
-////$params['start'] = 0;
-////$params['amount'] = 10;
-//$runs = $dao->getListResultOfNamedQueryWithParametersAndLimit(Queries::GET_RUNS_BY_RUNNER_ID, $params, 0);
-//
-//foreach ($runs as $key => $value) {
-////    var_dump($runs[0]['date']->format('d/m/Y'));
-//    $runs[$key]['date'] = strftime('%A, %d de %B de %Y', $runs[$key]['date']->getTimeStamp());
-//}
-//
-//$runCount = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RUN_COUNT, $params);
-////var_dump($runCount[1]);
-////
-//$output = array(
-//    "sEcho" => 1,
-//    "iTotalRecords" => intval($runCount[1]),
-//    "iTotalDisplayRecords" => count($runs),
-//    "aaData" => $runs
-//);
-//
-//$response = json_encode($output);
-//echo $response;
 
-echo TimeFunctions::secondsToTime('3600');
+$params['id'] = 1;
+$runs = $dao->getListResultOfQueryBuilderWithParametersAndLimit(Queries_Builders::get_runs_by_runner_id_builder(), $params, 0);
+
+foreach ($runs as $key => $value) {
+    $runs[$key]['date'] = strftime('%A, %d de %B de %Y', $runs[$key]['date']->getTimeStamp());
+}
+
+$runCount = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RUN_COUNT, $params);
+
+$output = array(
+    "sEcho" => 1,
+    "iTotalRecords" => intval($runCount[1]),
+    "iTotalDisplayRecords" => count($runs),
+    "aaData" => $runs
+);
+
+$response = json_encode($output);
+echo $response;
+
+var_dump(Queries_Builders::get_runs_by_runner_id_builder());

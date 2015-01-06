@@ -15,8 +15,8 @@ class Queries {
     
     const CHECK_EMAIL_EXISTS = 'SELECT count(r.email) as count FROM runner r WHERE r.email LIKE :email';
     
-    const GET_RUNS_BY_RUNNER_ID  = "SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes FROM run r WHERE r.runner = :id ORDER BY r.date DESC";
-    
+    const GET_RUNS_BY_RUNNER_ID  = "SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner = :id ORDER BY r.date DESC";
+   
     const GET_RUN_COUNT = 'SELECT count(r) FROM run r WHERE r.runner = :id';
     
     //Native Queries

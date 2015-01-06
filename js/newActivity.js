@@ -188,7 +188,7 @@ function revalidateTime() {
 }
 
 $(document).ready(function () {
-
+    $('#second-option').addClass('active');
     setUpFormValidation();
 
     $('#time').timepicker({

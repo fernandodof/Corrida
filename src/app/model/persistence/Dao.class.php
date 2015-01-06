@@ -1,5 +1,6 @@
 <?php
-require_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') .'/Corrida/vendor/autoload.php';
+
+require_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Corrida/vendor/autoload.php';
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
@@ -87,6 +88,78 @@ class Dao {
         }
         return $query->getResult();
     }
+
+    public function getListResultOfQueryBuilderWithParameters($qbArray, $params) {
+
+        $query1 = new Doctrine\ORM\QueryBuilder($this->em);
+
+        $select = $qbArray['select'];
+        $query1->select($select);
+        foreach ($qbArray['from'] as $key => $value) {
+            $query1->from($key, $value);
+        }
+
+        $query1->where($qbArray['where']);
+
+        foreach ($params as $key => $value) {
+            $query1->setParameter($key, $value);
+        }
+
+        return $query1->getQuery()->getArrayResult();
+    }
+
+    public function getListResultOfQueryBuilderWithParametersAndLimit($qbArray, $params, $start, $amount, $extraOrderBy = null) {
+        $query = new Doctrine\ORM\QueryBuilder($this->em);
+
+        $select = $qbArray['select'];
+        $query->select($select);
+        foreach ($qbArray['from'] as $key => $value) {
+            $query->from($key, $value);
+        }
+
+        $query->where($qbArray['where']);
+
+        foreach ($params as $key => $value) {
+            $query->setParameter($key, $value);
+        }
+
+        if (isset($qbArray['orderby'])) {
+            foreach ($qbArray['orderby'] as $key => $value) {
+                $query->addOrderBy($key, $value);
+            }
+        }
+
+        if ($extraOrderBy != null) {
+            foreach ($extraOrderBy as $key => $value) {
+                $query->addOrderBy($key, $value);
+            }
+        }
+        
+        $query->setFirstResult($start)->setMaxResults($amount);
+        return $query->getQuery()->getArrayResult();
+    }
+
+//    public function getListResultOfQueryBuilderWithParametersOberByAndLimit($qbArray, $params, $orderBy, $start, $amount = 10) {
+//
+//        $query1 = new Doctrine\ORM\QueryBuilder($this->em);
+//
+//        $select = $qbArray['select'];
+//        $query1->select($select);
+//        foreach ($qbArray['from'] as $key => $value) {
+//            $query1->from($key, $value);
+//        }
+//
+//        $query1->where($qbArray['where']);
+//
+//        foreach ($params as $key => $value) {
+//            $query1->setParameter($key, $value);
+//        }
+//        
+//         
+//        $query1->setFirstResult($start)->setMaxResults($amount);
+//
+//        return $query1->getQuery()->getArrayResult();
+//    }
 
     public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
         try {

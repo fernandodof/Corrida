@@ -1,0 +1,37 @@
+#runs tbody tr:nth-child(odd) {
+    background-color: #F1F1F1;
+}
+
+#runs th, td { 
+    white-space: nowrap; 
+}
+
+div.dataTables_wrapper {
+    /*width: 90%;*/
+    overflow: hidden;
+}
+
+#runs .notes-btn{
+    color: #5C5858;
+}
+
+#runs tr:hover {
+    background-color: #222222 !important;
+    color: white;
+}
+
+@-moz-document url-prefix() {
+    fieldset { 
+        display: table-cell;
+    }
+}
+
+.popover {
+    background: #222222;
+    color: white;
+}
+
+.popover .popover-title {
+    background-color: #848482;
+    
+}

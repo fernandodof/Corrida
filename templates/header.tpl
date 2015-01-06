@@ -7,6 +7,7 @@
         <link href="../libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
         <link href="../libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
         <link href="../libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
+        <link href="../css/styles.css" type="text/css" rel="stylesheet">
         <script src="../libs/bootstrap/js/jquery.min.js"></script>
         <script src="../libs/bootstrap/js/bootstrap.min.js"></script>
         <script src="../libs/bootstrapvalidator-dist-0.5.3/dist/js/bootstrapValidator.min.js" type="text/javascript"></script>
