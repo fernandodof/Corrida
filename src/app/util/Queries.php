@@ -18,8 +18,11 @@ class Queries {
     const GET_RUNS_BY_RUNNER_ID  = "SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner = :id ORDER BY r.date DESC";
    
     const GET_RUN_COUNT = 'SELECT count(r) FROM run r WHERE r.runner = :id';
+
+    const REMOVE_RUN_BY_ID = 'DELETE FROM run r WHERE r.id = :id';
     
     //Native Queries
     const GET_RUNS_BY_RUNNER_ID_NATIVE  = 'SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner_id = :id';
     
+
 }

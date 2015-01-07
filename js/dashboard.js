@@ -1,23 +1,29 @@
 function removeRun(id) {
-    var data = {runId: id};
 
-    var url = '../src/app/ajaxReceivers/validateLogin.php';
-    $.ajax({
-        type: "POST",
-        url: url,
-        async: true,
-        data: data,
-        success: function (serverResponse) {
-            if (serverResponse === '1') {
-                window.location.replace('../pages/dashboard');
-            } else {
-                $('#loginLoader').hide();
-                $('#loginErrorMsg').show();
-                $('#loginErrorMsg').css("display", "block");
-            }
-        },
-        error: function (data) {
-            alert("Error");
+    alertify.confirm("Deseja realmente apagar essa corrida ? (esta operação é permanente)", function (e) {
+        if (e) {
+            var data = {runId: id};
+
+            var url = '../src/app/ajaxReceivers/removeRun.php';
+            $.ajax({
+                type: "POST",
+                url: url,
+                async: true,
+                data: data,
+                success: function (serverResponse) {
+                    if (serverResponse === '1') {
+                        $("#runs").dataTable().fnDraw();
+                        alertify.success('Corrida apagada.');
+                    } else {
+                        alertify.error('Desculpe ocorreu um erro.');
+                    }
+                },
+                error: function (data) {
+                    alertify.error('Desculpe ocorreu um erro.');
+                }
+            });
+        } else {
+            alertify.error('Nada.');
         }
     });
 }
@@ -84,18 +90,26 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {orderable: false, targets: [5]}
-//            {"width": "26%", "targets": 0},
-//            {"width": "13%", "targets": 1},
-//            {"width": "15%", "targets": 2},
-//            {"width": "17%", "targets": 3},
-//            {"width": "14%", "targets": 4},
-//            {"width": "7%", "targets": 5}
-        ]
+        ],
+        "fnCreatedRow": function (nRow, aData, iDataIndex) {
+            $(nRow).attr('id', aData['id']);
+        }
 
     });
+
 
     $('[data-toggle="popover"]').popover();
 
     var tt = new $.fn.dataTable.TableTools($('#runs'));
     $(tt.fnContainer()).insertBefore('div.dataTables_wrapper');
+
+    $('#runs tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        }
+        else {
+            table.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
 });

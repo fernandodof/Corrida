@@ -1,4 +1,9 @@
 <?php
+
 require_once 'smartyHeader.php';
-session_start();
+
+if (!session_id()) {
+    session_start();
+}
+
 $smarty->display('../templates/header.tpl');
