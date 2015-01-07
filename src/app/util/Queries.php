@@ -20,6 +20,6 @@ class Queries {
     const GET_RUN_COUNT = 'SELECT count(r) FROM run r WHERE r.runner = :id';
     
     //Native Queries
-    const GET_RUNS_BY_RUNNER_ID_NATIVE  = 'SELECT r.date, r.distance, r.duration, r.avgspeed, r.pace, r.notes FROM run r WHERE r.runner_id = :id LIMIT :start, :amount';
+    const GET_RUNS_BY_RUNNER_ID_NATIVE  = 'SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner_id = :id';
     
 }

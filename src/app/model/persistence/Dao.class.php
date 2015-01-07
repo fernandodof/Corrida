@@ -23,7 +23,6 @@ class Dao {
             'driver' => 'pdo_mysql',
         );
 
-
         $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../"), $isDevMode);
         $entityManager = EntityManager::create($dbParams, $config);
 
@@ -108,7 +107,7 @@ class Dao {
         return $query1->getQuery()->getArrayResult();
     }
 
-    public function getListResultOfQueryBuilderWithParametersAndLimit($qbArray, $params, $start, $amount, $extraOrderBy = null) {
+    public function getListResultOfQueryBuilderWithParametersAndLimit($qbArray, $params, $start = null, $amount = null, $extraOrderBy = null, $keyword = null) {
         $query = new Doctrine\ORM\QueryBuilder($this->em);
 
         $select = $qbArray['select'];
@@ -116,8 +115,6 @@ class Dao {
         foreach ($qbArray['from'] as $key => $value) {
             $query->from($key, $value);
         }
-
-        $query->where($qbArray['where']);
 
         foreach ($params as $key => $value) {
             $query->setParameter($key, $value);
@@ -134,8 +131,29 @@ class Dao {
                 $query->addOrderBy($key, $value);
             }
         }
-        
-        $query->setFirstResult($start)->setMaxResults($amount);
+
+        if ($keyword !== null) {
+            $keyword = '%' . $keyword . '%';
+            $selectArray = array_map('trim', explode(',', $qbArray['select']));
+
+            $i = 0;
+            foreach ($selectArray as $s) {
+                $i++;
+                $query->orWhere($s . ' LIKE ?' . $i);
+                $query->setParameter($i, $keyword);
+            }
+        }
+
+        $query->andWhere($qbArray['where']);
+
+        if ($start !== null) {
+            $query->setFirstResult($start);
+        }
+
+        if ($amount !== null) {
+            $query->setMaxResults($amount);
+        }
+
         return $query->getQuery()->getArrayResult();
     }
 

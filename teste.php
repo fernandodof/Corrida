@@ -53,22 +53,32 @@ $dao = new Dao();
 //$dao->save($runner);
 
 $params['id'] = 1;
-$runs = $dao->getListResultOfQueryBuilderWithParametersAndLimit(Queries_Builders::get_runs_by_runner_id_builder(), $params, 0);
 
-foreach ($runs as $key => $value) {
-    $runs[$key]['date'] = strftime('%A, %d de %B de %Y', $runs[$key]['date']->getTimeStamp());
-}
+$s = Queries_Builders::get_runs_by_runner_id_builder()['select'];
+echo $s;
+$ss = array_map('trim', explode(',', $s));
 
-$runCount = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RUN_COUNT, $params);
+var_dump($ss);
 
-$output = array(
-    "sEcho" => 1,
-    "iTotalRecords" => intval($runCount[1]),
-    "iTotalDisplayRecords" => count($runs),
-    "aaData" => $runs
-);
+//$runs = $dao->getListResultOfQueryBuilderWithParameters(Queries_Builders::get_runs_by_runner_id_builder(), $params);
+////$runs = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUNS_BY_RUNNER_ID, $params);
+//
+//$runCount = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RUN_COUNT, $params);
+//
+////var_dump($runs);
+//
+//$output = array(
+//    "sEcho" => 1,
+//    "iTotalRecords" => intval($runCount[1]),
+//    "iTotalDisplayRecords" => count($runs),
+//    "aaData" => $runs
+//);
+//
+//function jsonRemoveUnicodeSequences($struct) {
+//   return preg_replace("/\\\\u([a-f0-9]{4})/e", "iconv('UCS-4LE','UTF-8',pack('V', hexdec('U$1')))", json_encode($struct));
+//}
+//
+//$response = json_encode($output,JSON_UNESCAPED_UNICODE);
+//var_dump($response);
+//echo $response;
 
-$response = json_encode($output);
-echo $response;
-
-var_dump(Queries_Builders::get_runs_by_runner_id_builder());

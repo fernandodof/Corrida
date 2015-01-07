@@ -24,6 +24,11 @@ class Run {
     private $date;
 
     /**
+     * @Column(type="string")
+     * * */
+    private $fullDate;
+
+    /**
      * @Column(type="float")
      * * */
     private $distance;
@@ -32,6 +37,11 @@ class Run {
      * @Column(type="bigint")
      * * */
     private $duration;
+
+    /**
+     * @Column(type="string")
+     * * */
+    private $fullTime;
 
     /**
      * @Column(type="text", nullable=true)
@@ -53,7 +63,7 @@ class Run {
      * @JoinColumn(name="runner_id", referencedColumnName="id")
      * */
     private $runner;
-
+    
     public function getId() {
         return $this->id;
     }
@@ -62,12 +72,20 @@ class Run {
         return $this->date;
     }
 
+    public function getFullDate() {
+        return $this->fullDate;
+    }
+
     public function getDistance() {
         return $this->distance;
     }
 
     public function getDuration() {
         return $this->duration;
+    }
+
+    public function getFullTime() {
+        return $this->fullTime;
     }
 
     public function getNotes() {
@@ -94,12 +112,20 @@ class Run {
         $this->date = $date;
     }
 
+    public function setFullDate($fullDate) {
+        $this->fullDate = $fullDate;
+    }
+
     public function setDistance($distance) {
         $this->distance = $distance;
     }
 
     public function setDuration($duration) {
         $this->duration = $duration;
+    }
+
+    public function setFullTime($fullTime) {
+        $this->fullTime = $fullTime;
     }
 
     public function setNotes($notes) {
@@ -117,5 +143,7 @@ class Run {
     public function setRunner($runner) {
         $this->runner = $runner;
     }
+
+
 
 }

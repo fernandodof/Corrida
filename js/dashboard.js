@@ -31,12 +31,14 @@ $(document).ready(function () {
         "bPaginate": true,
         "responsive": true,
         "scrollX": true,
+        "pagingType": "full_numbers",
         "sServerMethod": "POST",
+        "order": [[0, "desc"]],
         "sAjaxSource": "../src/app/ajaxReceivers/runsTablePagination.php",
         "aoColumns": [
-            {"mData": "date"},
+            {"mData": "fullDate"},
             {"mData": "distance"},
-            {"mData": "duration"},
+            {"mData": "fullTime"},
             {"mData": "avgSpeed"},
             {"mData": "pace"},
             {"mData": "notesId", "mRender": function (notesId) {
@@ -56,16 +58,10 @@ $(document).ready(function () {
             $('[data-toggle="popover"]').popover();
         },
         "columnDefs": [
-//            {"width": "17%", "targets": 0},
-//            {"width": "5%", "targets": 1},
-//            {"width": "7%", "targets": 2},
-//            {"width": "15%", "targets": 3},
-//            {"width": "12%", "targets": 4}
+            {orderable: false, targets: [5]}
         ]
     });
 
-    var lastIdx = null;
-    
     $('[data-toggle="popover"]').popover();
 
 });

@@ -1,5 +1,13 @@
+#runs {
+    width: 100%;
+}
+
 #runs tbody tr:nth-child(odd) {
     background-color: #F1F1F1;
+}
+
+.pagination, #runs_filter{
+    float: right;
 }
 
 #runs th, td { 
@@ -33,5 +41,5 @@ div.dataTables_wrapper {
 
 .popover .popover-title {
     background-color: #848482;
-    
+
 }

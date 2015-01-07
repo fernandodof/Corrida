@@ -1,5 +1,5 @@
-<link href="../libs/DataTables-1.10.4/media/css/jquery.dataTables.min.css">        
-<link href="../libs/DataTables-1.10.4/media/css/jquery.dataTables_themeroller.css">
+{*<link href="../libs/DataTables-1.10.4/media/css/jquery.dataTables.min.css">        *}
+{*<link href="../libs/DataTables-1.10.4/media/css/jquery.dataTables_themeroller.css">*}
 <link href="../libs/DataTables-1.10.4/bootstrapDatatableTheme/dataTables.bootstrap.css">
 <link href="../libs/DataTables-1.10.4/extensions/Responsive/css/dataTables.responsive.css">
 <link href="../css/dashboard.css" rel="stylesheet">
@@ -17,7 +17,7 @@
                 <h1 class="page-header">Corridas<small></small>
                 </h1>
                 <div class="table-responsive">
-                    <table id="runs" class="display table-condensed table table-striped table-bordered">
+                    <table id="runs" class="display table">
                         <thead>
                             <tr>
                                 <th>Data</th> 
