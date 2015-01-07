@@ -1,5 +1,5 @@
-<link href="../css/subscribe.css" rel="stylesheet">
-<script src="../js/subscribe.js"></script>
+<link href="{$templateRoot}css/subscribe.css" rel="stylesheet">
+<script src="{$templateRoot}js/subscribe.js"></script>
 <body>
     <p class="form-title">Cadastro</p>
     <div id="wrapSubscribe">

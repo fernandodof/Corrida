@@ -16,4 +16,16 @@ class Queries_Builders {
         
         return $qb;
     }
+    
+    public static function get_runs_summary(){
+        $qb['select'] = 'count(r.id) totalRuns, sum(r.duration) totalTime, sum(r.distance) totalDistance';
+        
+        $from['run'] = 'r';
+        $qb['from'] = $from;
+        
+        $qb['where'] = 'r.runner = :id';
+        
+        return $qb;        
+    }
+    
 }

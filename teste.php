@@ -54,12 +54,12 @@ $dao = new Dao();
 
 $params['id'] = 1;
 
-$s = Queries_Builders::get_runs_by_runner_id_builder()['select'];
-echo $s;
-$ss = array_map('trim', explode(',', $s));
-
-var_dump($ss);
-
+//$s = Queries_Builders::get_runs_by_runner_id_builder()['select'];
+//echo $s;
+//$ss = array_map('trim', explode(',', $s));
+//
+//var_dump($ss);
+//
 //$runs = $dao->getListResultOfQueryBuilderWithParameters(Queries_Builders::get_runs_by_runner_id_builder(), $params);
 ////$runs = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUNS_BY_RUNNER_ID, $params);
 //
@@ -81,4 +81,17 @@ var_dump($ss);
 //$response = json_encode($output,JSON_UNESCAPED_UNICODE);
 //var_dump($response);
 //echo $response;
+//$summary = $dao->getListResultOfQueryBuilderWithParameters(Queries_Builders::get_runs_summary(), $params);
+//
+//var_dump($summary);
 
+
+
+$params1['runid'] = 17;
+$params1['runnerid'] = 1;
+
+var_dump($params1);
+
+$run = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUN_BY_RUNNER_ID_RUN_ID, $params1);
+
+var_dump($run);

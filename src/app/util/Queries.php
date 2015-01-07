@@ -21,6 +21,7 @@ class Queries {
 
     const REMOVE_RUN_BY_ID = 'DELETE FROM run r WHERE r.id = :id';
     
+    const GET_RUN_BY_RUNNER_ID_RUN_ID = 'SELECT r FROM run r WHERE r.id = :runid AND r.runner = :runnerid';
     //Native Queries
     const GET_RUNS_BY_RUNNER_ID_NATIVE  = 'SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner_id = :id';
     

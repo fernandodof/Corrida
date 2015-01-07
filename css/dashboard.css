@@ -2,7 +2,7 @@
     width: 100%;
 }
 
-#runs tbody tr:nth-child(odd) {
+#runs tbody tr.odd {
     background-color: #F1F1F1;
 }
 
@@ -23,10 +23,32 @@ div.dataTables_wrapper {
     color: #5C5858;
 }
 
-#runs tr:hover {
-    background-color: #222222 !important;
-    color: white;
+#summary{
+    margin-bottom: 15px;
+    margin-top: 15px;
 }
+
+#summary #summary-wrapper .summary-content img{
+    /*background: darkslateblue;*/
+    /*height: 80px;*/
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+
+#summary #summary-wrapper .summary-content{
+}
+
+#summaryButton{
+    margin-top: 15px;
+}
+
+.rowSelected, #runs tr:hover  {
+    background-color: #B0BED9 !important;
+    color: black;
+}
+
+
 
 @-moz-document url-prefix() {
     fieldset { 

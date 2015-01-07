@@ -1,14 +1,14 @@
-<link href="../libs/pickadate.js-3.5.3/lib/compressed/themes/default.css" rel="stylesheet">
-<link href="../libs/pickadate.js-3.5.3/lib/compressed/themes/default.date.css" rel="stylesheet">
-<link href="../libs/bootstrap-3-timepicker-0.2.5/css/bootstrap-timepicker.min.css" rel="stylesheet">
-<link href="../libs/iCheck-1.0.2/skins/square/blue.css" rel="stylesheet">
-<link href="../css/newActivity.css" rel="stylesheet">
-<script src="../libs/pickadate.js-3.5.3/lib/compressed/picker.js"></script>
-<script src="../libs/pickadate.js-3.5.3/lib/compressed/picker.date.js"></script>
-<script src="../libs/bootstrap-3-timepicker-0.2.5/js/bootstrap-timepicker.min.js"></script>
-<script src="../libs/iCheck-1.0.2/icheck.min.js"></script>
-<script src="../libs/pickadate.js-3.5.3/lib/compressed/translations/pt_BR.js" charset="UTF-8"></script>
-<script src="../js/newActivity.js"></script>
+<link href="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/themes/default.css" rel="stylesheet">
+<link href="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/themes/default.date.css" rel="stylesheet">
+<link href="{$templateRoot}libs/bootstrap-3-timepicker-0.2.5/css/bootstrap-timepicker.min.css" rel="stylesheet">
+<link href="{$templateRoot}libs/iCheck-1.0.2/skins/square/blue.css" rel="stylesheet">
+<link href="{$templateRoot}css/newActivity.css" rel="stylesheet">
+<script src="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/picker.js"></script>
+<script src="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/picker.date.js"></script>
+<script src="{$templateRoot}libs/bootstrap-3-timepicker-0.2.5/js/bootstrap-timepicker.min.js"></script>
+<script src="{$templateRoot}libs/iCheck-1.0.2/icheck.min.js"></script>
+<script src="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/translations/pt_BR.js" charset="UTF-8"></script>
+<script src="{$templateRoot}js/newActivity.js"></script>
 <div id="page-wrapper">
 
     <div class="container-fluid">

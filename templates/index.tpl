@@ -1,8 +1,7 @@
-<link href="../css/index.css" rel="stylesheet">
-<script src="../js/index.js"></script>
+<link href="{$templateRoot}css/index.css" rel="stylesheet">
+<script src="{$templateRoot}js/index.js"></script>
 <body>
     <div class="container">
-        
         <div class="row">
             <div class="col-md-12">
                 <div class="wrap">
@@ -14,12 +13,6 @@
                         <button type="submit" data-loading-text="Entrar..." onclick="validateLogin();" id="btnLogin" class="btn btn-success col-xs-12">ENTRAR <img src="../images/loader/loginLoader.gif" id="loginLoader"></button>
                         <div class="remember-forgot">
                             <div class="row">
-                                {*                                <div class="col-md-6 forgot-pass-content">
-                                <a href="javascription:void(0)" class="btn btn-xs btn-default forgot-pass">Esqueci a senha</a>
-                                </div>
-                                <div class="col-md-6">
-                                <a href="../pages/subscribe" class="pull-right">Cadastrar-se</a>
-                                </div>*}
                                 <div class="btn-group col-xs-12" role="group">
                                     <a class="btn btn-default col-xs-6" id="forgortPass">Esqueci a Senha</a>
                                     <a class="btn btn-default col-xs-6" href="../pages/subscribe">Cadastrar-se</a>

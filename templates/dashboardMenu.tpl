@@ -1,9 +1,9 @@
-<link href="../libs/startbootstrap-sb-admin-1.0.1/css/sb-admin.css" rel="stylesheet">
-<link href="../libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
-<link href="../libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
-<link href="../libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
-<script src="../libs/alertify.js-0.3.11/lib/alertify.min.js"></script>
-<script src="../js/dashboardMenu.js"></script>
+<link href="{$templateRoot}libs/startbootstrap-sb-admin-1.0.1/css/sb-admin.css" rel="stylesheet">
+<link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.core.css" type="text/css" rel="stylesheet">
+<link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.default.css" type="text/css" rel="stylesheet">
+<link href="{$templateRoot}libs/alertify.js-0.3.11/themes/alertify.bootstrap.css" type="text/css" rel="stylesheet">
+<script src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.min.js"></script>
+<script src="{$templateRoot}js/dashboardMenu.js"></script>
 <body>
     <div id="wrapper">
 

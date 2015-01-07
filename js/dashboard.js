@@ -80,7 +80,7 @@ $(document).ready(function () {
                     if (notes !== null && notes !== "") {
                         strReturn += "<a href='#' tabindex='0' class='notes-btn t-link' role='button' data-placement='left' data-toggle='popover' data-trigger='focus' title='Observações' data-content='" + notes + "'><span class='fa fa-fw fa-2x fa-paperclip' ></span></a>\n";
                     }
-                    strReturn += "<a href='#' title='Editar'><span class='fa fa-fw fa-2x fa-edit t-link'></span></a>";
+                    strReturn += "<a href='../pages/editRun/"+id+"' title='Editar'><span class='fa fa-fw fa-2x fa-edit t-link'></span></a>";
                     strReturn += "<a href='#' onclick='removeRun(" + id + ");' title='Excluir'><span class='fa fa-fw fa-2x fa-trash red-icon t-link'></span></a>\n";
                     return  strReturn;
                 }}
@@ -104,12 +104,16 @@ $(document).ready(function () {
     $(tt.fnContainer()).insertBefore('div.dataTables_wrapper');
 
     $('#runs tbody').on('click', 'tr', function () {
-        if ($(this).hasClass('selected')) {
-            $(this).removeClass('selected');
+        if ($(this).hasClass('rowSelected')) {
+            $(this).removeClass('rowSelected');
         }
         else {
-            table.$('tr.selected').removeClass('selected');
-            $(this).addClass('selected');
+            table.$('tr.rowSelected').removeClass('rowSelected');
+            $(this).addClass('rowSelected');
         }
     });
+    
+    
+    $('.sorting').append("<span class='fa fa-fw fa-sort blue-icon'></span>");
+    
 });
