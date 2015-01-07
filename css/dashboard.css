@@ -43,3 +43,7 @@ div.dataTables_wrapper {
     background-color: #848482;
 
 }
+
+.table-responsive .DTTT{
+    margin-bottom: 12px;
+}

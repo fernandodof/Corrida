@@ -20,18 +20,26 @@ ChromePhp::log($_POST);
 
 $keyword = trim(filter_input(INPUT_POST, 'sSearch'));
 
+$displayLenght = intval(filter_input(INPUT_POST, 'iDisplayLength'));
+
+if ($displayLenght === -1) {
+    $displayLenght = null;
+}
+
+ChromePhp::log($displayLenght);
+
 if ($keyword === '') {
+
     $runs = $dao->getListResultOfQueryBuilderWithParametersAndLimit(Queries_Builders::get_runs_by_runner_id_builder(), $params, 
-        filter_input(INPUT_POST, 'iDisplayStart'), filter_input(INPUT_POST, 'iDisplayLength'), $extraOrderBy);
+            filter_input(INPUT_POST, 'iDisplayStart'), $displayLenght, $extraOrderBy);
     $runCountArray = $dao->getSingleResultOfNamedQueryWithParameters(Queries::GET_RUN_COUNT, $params);
     $runCount = $runCountArray[1];
-}else{
+} else {
     $runs = $dao->getListResultOfQueryBuilderWithParametersAndLimit(Queries_Builders::get_runs_by_runner_id_builder(), $params, 
-        filter_input(INPUT_POST, 'iDisplayStart'), filter_input(INPUT_POST, 'iDisplayLength'), $extraOrderBy, $keyword);
-    
-    $runsToCount = $dao->getListResultOfQueryBuilderWithParametersAndLimit(Queries_Builders::get_runs_by_runner_id_builder(), $params, 
-        null, null, $extraOrderBy, $keyword);
-    
+            filter_input(INPUT_POST, 'iDisplayStart'), $displayLenght, $extraOrderBy, $keyword);
+
+    $runsToCount = $dao->getListResultOfQueryBuilderWithParametersAndLimit(Queries_Builders::get_runs_by_runner_id_builder(), $params, null, null, $extraOrderBy, $keyword);
+
     $runCount = count($runsToCount);
 }
 

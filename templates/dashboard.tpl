@@ -2,8 +2,11 @@
 {*<link href="../libs/DataTables-1.10.4/media/css/jquery.dataTables_themeroller.css">*}
 <link href="../libs/DataTables-1.10.4/bootstrapDatatableTheme/dataTables.bootstrap.css">
 <link href="../libs/DataTables-1.10.4/extensions/Responsive/css/dataTables.responsive.css">
+<link href="../libs/DataTables-1.10.4/extensions/TableTools/css/dataTables.tableTools.min.css">
+{*<link rel="stylesheet" type="text/css" href="/DataTables-1.10.4/extensions/Editor-1.3.3/css/dataTables.editor.css">*}
 <link href="../css/dashboard.css" rel="stylesheet">
 <script src="../libs/DataTables-1.10.4/media/js/jquery.dataTables.min.js"></script>
+<script src="../libs/DataTables-1.10.4/extensions/TableTools/js/dataTables.tableToolsModified.js"></script>
 <script src="../libs/DataTables-1.10.4/bootstrapDatatableTheme/dataTables.bootstrap.js"></script>
 <script src="../libs/bootstrap/js/bootstrap-popover.js"></script>
 <script src="../js/dashboard.js"></script>

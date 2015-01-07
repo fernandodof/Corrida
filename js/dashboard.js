@@ -1,3 +1,27 @@
+function removeRun(id) {
+    var data = {runId: id};
+
+    var url = '../src/app/ajaxReceivers/validateLogin.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            if (serverResponse === '1') {
+                window.location.replace('../pages/dashboard');
+            } else {
+                $('#loginLoader').hide();
+                $('#loginErrorMsg').show();
+                $('#loginErrorMsg').css("display", "block");
+            }
+        },
+        error: function (data) {
+            alert("Error");
+        }
+    });
+}
+
 $(document).ready(function () {
 
     $('#first-option').addClass('active');
@@ -6,19 +30,19 @@ $(document).ready(function () {
         language: {
             processing: "Processando...",
             search: "Pesquisar&nbsp;:",
-            lengthMenu: "Mostrar _MENU_ Registros",
-            info: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-            infoEmpty: "Mostrando de 0 até 0 de 0 registros",
+            lengthMenu: "Mostrar _MENU_ Corridas",
+            info: "Mostrando de _START_ até _END_ de _TOTAL_ corridas",
+            infoEmpty: "Mostrando de 0 até 0 de 0 corridas",
             infoFiltered: "",
             infoPostFix: "",
-            loadingRecords: "Carregando resgistros...",
+            loadingRecords: "Carregando corridas...",
             zeroRecords: "Não foram encontrados resultados",
-            emptyTable: "Tabela Vazia",
+            emptyTable: "Nenhuma corrida encotrada",
             paginate: {
-                first: "Primeiro",
+                first: "Primeira",
                 previous: "Anterior",
-                next: "Próximo",
-                last: "Último"
+                next: "Próxima",
+                last: "Última"
             },
             aria: {
                 sortAscending: ": Habilitar ordenação ascendente",
@@ -34,6 +58,7 @@ $(document).ready(function () {
         "pagingType": "full_numbers",
         "sServerMethod": "POST",
         "order": [[0, "desc"]],
+        "aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "Todas"]],
         "sAjaxSource": "../src/app/ajaxReceivers/runsTablePagination.php",
         "aoColumns": [
             {"mData": "fullDate"},
@@ -50,7 +75,7 @@ $(document).ready(function () {
                         strReturn += "<a href='#' tabindex='0' class='notes-btn t-link' role='button' data-placement='left' data-toggle='popover' data-trigger='focus' title='Observações' data-content='" + notes + "'><span class='fa fa-fw fa-2x fa-paperclip' ></span></a>\n";
                     }
                     strReturn += "<a href='#' title='Editar'><span class='fa fa-fw fa-2x fa-edit t-link'></span></a>";
-                    strReturn += "<a href='#' title='Excluir'><span class='fa fa-fw fa-2x fa-trash red-icon t-link'></span></a>\n";
+                    strReturn += "<a href='#' onclick='removeRun(" + id + ");' title='Excluir'><span class='fa fa-fw fa-2x fa-trash red-icon t-link'></span></a>\n";
                     return  strReturn;
                 }}
         ],
@@ -59,9 +84,18 @@ $(document).ready(function () {
         },
         "columnDefs": [
             {orderable: false, targets: [5]}
+//            {"width": "26%", "targets": 0},
+//            {"width": "13%", "targets": 1},
+//            {"width": "15%", "targets": 2},
+//            {"width": "17%", "targets": 3},
+//            {"width": "14%", "targets": 4},
+//            {"width": "7%", "targets": 5}
         ]
+
     });
 
     $('[data-toggle="popover"]').popover();
 
+    var tt = new $.fn.dataTable.TableTools($('#runs'));
+    $(tt.fnContainer()).insertBefore('div.dataTables_wrapper');
 });
