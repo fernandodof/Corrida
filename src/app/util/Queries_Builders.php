@@ -7,7 +7,7 @@
  */
 class Queries_Builders {
     public static function get_runs_by_runner_id_builder(){
-        $qb['select'] = 'r.fullDate, r.distance, r.fullTime, r.avgSpeed, r.pace, r.notes, r.id';
+        $qb['select'] = 'r.id, r.fullDate, r.distance, r.fullTime, r.avgSpeed, r.pace, r.notes';
         
         $from['run'] = 'r';
         $qb['from'] = $from;

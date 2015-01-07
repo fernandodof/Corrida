@@ -139,8 +139,11 @@ class Dao {
             $i = 0;
             foreach ($selectArray as $s) {
                 $i++;
-                $query->orWhere($s . ' LIKE ?' . $i);
-                $query->setParameter($i, $keyword);
+
+                if (!strpos($s, 'id')) {
+                    $query->orWhere($s . ' LIKE ?' . $i);
+                    $query->setParameter($i, $keyword);
+                }
             }
         }
 
