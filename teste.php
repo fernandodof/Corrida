@@ -3,6 +3,7 @@
 require_once './src/app//model/persistence/Dao.class.php';
 require_once './src/app/util/Queries.php';
 require_once './src/app/util/Queries_Builders.php';
+require_once './src/app/util/TimeFunctions.php';
 
 setlocale(LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese');
 
@@ -87,11 +88,22 @@ $params['id'] = 1;
 
 
 
-$params1['runid'] = 17;
-$params1['runnerid'] = 1;
+//$params1['runid'] = 17;
+//$params1['runnerid'] = 1;
+//
+//var_dump($params1);
+//
+//$run = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUN_BY_RUNNER_ID_RUN_ID, $params1);
+//
+//var_dump($run);
 
-var_dump($params1);
 
-$run = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUN_BY_RUNNER_ID_RUN_ID, $params1);
+$t = TimeFunctions::secondsToTime(3600);
 
-var_dump($run);
+var_dump($t);
+
+echo '<br><br><br>';
+
+$t = TimeFunctions::secondsToHoursMinutesSeconds(1000000);
+
+var_dump($t);

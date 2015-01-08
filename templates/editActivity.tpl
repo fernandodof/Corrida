@@ -9,7 +9,7 @@
 <script src="{$templateRoot}libs/bootstrap-3-timepicker-0.2.5/js/bootstrap-timepicker.min.js"></script>
 <script src="{$templateRoot}libs/iCheck-1.0.2/icheck.min.js"></script>
 <script src="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/translations/pt_BR.js" charset="UTF-8"></script>
-<script src="{$templateRoot}js/newActivity.js"></script>
+<script src="{$templateRoot}js/activityFunctions.js"></script>
 <script src="{$templateRoot}js/editActivity.js"></script>
 <div id="page-wrapper">
 
@@ -30,7 +30,7 @@
                                 <a class="btn btn-default btn-lg pull-left editToogle" id="edit" onclick="edit();">Editar <span class="fa fa-fw fa-edit"></span></a>
                             </div>
                             <form method="POST" id="newRunForm">
-                                <input type="hidden" value="{$run->getId()}">
+                                <input type="hidden" id="runId" value="{$run->getId()}">
                                 <div class="col-md-7">
                                     <div id="sandbox-container" class="form-group">
                                         <div class="form-group-lg input-group date">
@@ -68,7 +68,7 @@
                                 <div class="form-group form-group-lg" id="notesGroup">
                                     <textarea name="notes" placeholder="Observações" id="notes" disabled class="form-control editToogle">{$run->getNotes()}</textarea>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-lg pull-right editToogle" disabled id="save">Salvar <span id="loader"><img src="../images/loader/loginLoader.giff"></span></button>
+                                <button type="submit" class="btn btn-success btn-lg pull-right editToogle" disabled id="save">Salvar <span id="loader"><img src="{$templateRoot}/images/loader/loginLoader.gif"></span></button>
                             </form>
                             <div id="run-info">
                                 <div class="pull-left">
@@ -82,8 +82,6 @@
                                         <input type="text" id="avgPace" readonly class="form-control">
                                     </div>
                                 </div>
-                                {*                                <img src="../images/runer.svg" id="running-icon" class="img-responsive">*}
-
                             </div>
                         </div>
                     </div>

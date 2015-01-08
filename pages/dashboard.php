@@ -15,7 +15,54 @@ $params['id'] = $_SESSION['id'];
 $summary = $dao->getListResultOfQueryBuilderWithParameters(Queries_Builders::get_runs_summary(), $params)[0];
 
 
-$summary['totalTime'] = TimeFunctions::secondsToTime($summary['totalTime']);
+//$summary['totalTime'] = TimeFunctions::secondsToTime($summary['totalTime']);
+
+$totalTime = $summary['totalTime'];
+
+$totalTimeConverted = TimeFunctions::secondsToCompleteTime($totalTime);
+
+$timeToShow = $totalTimeConverted['hours'] . ':' . $totalTimeConverted['minutes'] . ':' . $totalTimeConverted['seconds'];
+
+if ($totalTimeConverted['days'] != 0) {
+
+    if ($totalTimeConverted['days'] === 1) {
+        $timeToShow = $totalTimeConverted['days'] . ' dia ' . $timeToShow;
+    } else {
+        $timeToShow = $totalTimeConverted['days'] . ' dias ' . $timeToShow;
+    }
+}
+
+
+if ($totalTimeConverted['months'] != 0) {
+
+    if ($totalTimeConverted['days'] === 0) {
+        $timeToShow = $totalTimeConverted['days'] . ' dias ' . $timeToShow;
+    }
+
+    if ($totalTimeConverted['months'] === 1) {
+        $timeToShow = $totalTimeConverted['months'] . ' mes ' . $timeToShow;
+    } else {
+        $timeToShow = $totalTimeConverted['months'] . ' meses ' . $timeToShow;
+    }
+}
+
+if ($totalTimeConverted['years'] != 0) {
+
+    if ($totalTimeConverted['months'] === 0) {
+        $timeToShow = $totalTimeConverted['months'] . ' meses ' . $timeToShow;
+    }
+
+    if ($totalTimeConverted['years'] === 1) {
+        $timeToShow = $totalTimeConverted['years'] . ' ano ' . $timeToShow;
+    } else {
+        $timeToShow = $totalTimeConverted['years'] . ' anos ' . $timeToShow;
+    }
+}
+
+
+
+$summary['totalTime'] = $timeToShow;
+
 $summary['totalDistance'].= ' Km';
 
 $smarty->assign('summary', $summary);

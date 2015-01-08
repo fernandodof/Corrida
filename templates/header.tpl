@@ -14,3 +14,4 @@
         <script src="{$templateRoot}libs/bootstrapvalidator-dist-0.5.3/src/js/language/pt_BR.js" type="text/javascript"></script>
         <script type="text/javascript" src="{$templateRoot}libs/alertify.js-0.3.11/lib/alertify.min.js"></script>
     </head>
+    <input type="hidden" value="{$templateRoot}" id="templateRoot">

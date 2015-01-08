@@ -8,6 +8,7 @@
 <script src="{$templateRoot}libs/bootstrap-3-timepicker-0.2.5/js/bootstrap-timepicker.min.js"></script>
 <script src="{$templateRoot}libs/iCheck-1.0.2/icheck.min.js"></script>
 <script src="{$templateRoot}libs/pickadate.js-3.5.3/lib/compressed/translations/pt_BR.js" charset="UTF-8"></script>
+<script src="{$templateRoot}js/activityFunctions.js"></script>
 <script src="{$templateRoot}js/newActivity.js"></script>
 <div id="page-wrapper">
 
@@ -65,7 +66,7 @@
                                 <div class="form-group form-group-lg" id="notesGroup">
                                     <textarea name="notes" placeholder="Observações" id="notes" class="form-control"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-lg pull-right" id="save">Salvar <span id="loader"><img src="../images/loader/loginLoader.gif"></span></button>
+                                <button type="submit" class="btn btn-success btn-lg pull-right" id="save">Salvar <span id="loader"><img src="{$templateRoot}/images/loader/loginLoader.gif"></span></button>
                             </form>
                             <div id="run-info">
                                 <div class="pull-left">
