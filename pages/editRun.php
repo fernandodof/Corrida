@@ -29,6 +29,8 @@ if ($run == null) {
     header('Location: ../index');
 }
 
-
 include_once '../pages/dashboardMenu.php';
+
+$smarty->assign('runDate', date('d/m/Y', $run->getDate()->getTimestamp()));
+$smarty->assign('run', $run);
 $smarty->display('../templates/editRun.tpl');
