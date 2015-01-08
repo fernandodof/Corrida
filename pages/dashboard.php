@@ -14,9 +14,6 @@ if (!session_id()) {
 $params['id'] = $_SESSION['id'];
 $summary = $dao->getListResultOfQueryBuilderWithParameters(Queries_Builders::get_runs_summary(), $params)[0];
 
-
-//$summary['totalTime'] = TimeFunctions::secondsToTime($summary['totalTime']);
-
 $totalTime = $summary['totalTime'];
 
 $totalTimeConverted = TimeFunctions::secondsToCompleteTime($totalTime);

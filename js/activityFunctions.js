@@ -2,7 +2,7 @@ function calculateSpeedPace() {
     if ($('#distance').val() !== '' && (parseFloat($('#distance').val()) > 0) && $('#time').val() !== '' && validateTime($('#time').val()) && convertToSeconds($('#time').val()) > 0) {
         var seconds = convertToSeconds($('#time').val());
         var minutes = convertToMinutes($('#time').val());
-        var distance = parseFloat($('#distance').val());
+        var distance = parseFloat($('#distance').val().replace(/,/g, '.'));
 
 
         if ($('input[name=distanceUnit]:checked').val() === 'k') {

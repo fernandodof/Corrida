@@ -34,7 +34,7 @@
                         <a href="newActivity"><i class="fa fa-fw fa-plus"></i> Nova Corrida</a>
                     </li>
                     <li class='menu-option' id="thrid-option">
-                        <a href="#"><i class="fa fa-fw fa-search"></i> Pesquisar</a>
+                        <a href="search"><i class="fa fa-fw fa-search"></i> Pesquisar</a>
                     </li>
                     <li class='menu-option'id="fourth-option" >
                         <a href="#"><i class="fa fa-fw fa-user"></i> Cadastro</a>

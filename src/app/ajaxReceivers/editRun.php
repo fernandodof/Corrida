@@ -22,7 +22,7 @@ $run->setAvgSpeed(filter_input(INPUT_POST, 'avgSpeed'));
 $run->setPace(filter_input(INPUT_POST, 'avgPace'));
 $run->setRunner($runner);
 
-$dao->save($run);
+$dao->update($run);
 
 $dao->update($runner);
 
