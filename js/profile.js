@@ -40,6 +40,38 @@ function editSubscription() {
     });
 }
 
+function changePassword() {
+    $('#loginLoader1').show();
+    $('body').dimBackground();
+    var password = $('#newPass1').val();
+
+    var data = {password: password};
+    var url = templateRoot + 'src/app/ajaxReceivers/changePassword.php';
+    $.ajax({
+        type: "POST",
+        url: url,
+        async: true,
+        data: data,
+        success: function (serverResponse) {
+            $('#changePassword').data('bootstrapValidator').resetForm();
+            edit();
+            $('#password1').val('');
+            $('#newPass1').val('');
+            $('#newPass2').val('');
+            $('body').undim();
+            $('#loginLoader1').hide();
+            alertify.alert('Senha alterada');
+        },
+        error: function (data) {
+            alertify.alert('Desculpe ocorreu um erro');
+            edit();
+            $('#password1').val('');
+            $('body').undim();
+            $('#loginLoader1').hide();
+        }
+    });
+}
+
 $(document).ready(function () {
 
     templateRoot = $('#templateRoot').val();
@@ -133,10 +165,10 @@ $(document).ready(function () {
             validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
         },
         fields: {
-            currentPass: {
+            password1: {
                 validators: {
                     notEmpty: {
-                        message: 'A senha não pode ser vazia'
+                        message: 'A senha não pode ficar vazia'
                     },
                     stringLength: {
                         min: 6,
@@ -152,7 +184,7 @@ $(document).ready(function () {
                     }
                 }
             },
-            password1: {
+            newPass1: {
                 validators: {
                     notEmpty: {
                         message: 'Nova senha não pode ser vazia'
@@ -163,12 +195,12 @@ $(document).ready(function () {
                         message: 'A senha deve ter entre 6 e 30 caracteres'
                     },
                     identical: {
-                        field: 'password2',
-                        message: 'As senhas são diferentes'
+                        field: 'newPass2',
+                        message: 'A senha e a confirmação são diferentes'
                     }
                 }
             },
-            password2: {
+            newPass2: {
                 validators: {
                     notEmpty: {
                         message: 'Confirmação de senha não pode ser vazia'
@@ -179,8 +211,8 @@ $(document).ready(function () {
                         message: 'A senha deve ter entre 6 e 30 caracteres'
                     },
                     identical: {
-                        field: 'password1',
-                        message: 'As senhas são diferentes'
+                        field: 'newPass1',
+                        message: 'A senha e a confirmação são diferentes'
                     }
                 }
             }
@@ -188,7 +220,7 @@ $(document).ready(function () {
     }).on('success.form.bv', function (e) {
         // Prevent form submission
         e.preventDefault();
-        editPassword();
+        changePassword();
     });
 
 });

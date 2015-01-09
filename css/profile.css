@@ -9,14 +9,22 @@ p.form-title{
     letter-spacing: 4px;
 }
 
-#loginLoader{
+#loginLoader, #loginLoader1{
     width: 21px;
     height: 21px;
     display: none;
 }
 
 #editBtn{
-    margin-bottom: 15px;
+    /*margin-bottom: 10px;*/
+}
+
+.form-title{
+    margin-bottom: 20px;
+}
+
+#wrapEdit{
+    margin-bottom: 30px;
 }
 
 .glyphicon-refresh-animate {
