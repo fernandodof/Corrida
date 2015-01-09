@@ -61,3 +61,12 @@ legend.form-legend {
     margin-bottom: 15px;
     border-bottom: 2px solid #337AB7;
 }
+
+#help-date{
+    color: red;
+    display: none;
+}
+
+#progress{
+    display: none;
+}

@@ -1,4 +1,14 @@
 function searchByDate() {
+
+    if ($('#runDate').val() === '') {
+        $('#help-date').show();
+        return;
+    } else {
+        $('#help-date').hide();
+    }
+
+    $('#progress').show();
+
     var date = $('#runDate').val();
 
     var data = {date: date};
@@ -11,7 +21,7 @@ function searchByDate() {
         data: data,
         success: function (serverResponse) {
             $('#search-results').html(serverResponse);
-            $('#loader').hide();
+            $('#progress').hide();
         },
         error: function (data) {
             alertify.alert('Ocorreu um erro na transmissão do dados, tente novamente mais tarde');
@@ -20,6 +30,7 @@ function searchByDate() {
 }
 
 $(document).ready(function () {
+
     $('#thrid-option').addClass('active');
 
     $('#runDate').pickadate({
@@ -28,10 +39,6 @@ $(document).ready(function () {
         hiddenName: true,
         clear: 'limpar',
         close: 'fechar'
-    });
-
-    $('#runDate').pickadate('picker').on('render', function () {
-        $('#newRunForm').bootstrapValidator('revalidateField', 'runDate');
     });
 
     $(".clendar-icon").click(function () {
