@@ -28,11 +28,13 @@
                                                 <input type="text" id="runDate" name="runDate" placeholder="Data da corrida" class="input-lg form-control"><span class="clendar-icon input-group-addon"><i class="fa fa-fw fa-calendar"></i></span>
                                             </div>
                                         </div>
-                                        <a class="btn btn-success btn-lg searchBtn hidden-xs hidden-sm pull-left" href="#"><span class="fa fa-fw fa-search"></span></a>
-                                        <a class="btn btn-success btn-lg searchBtn visible-xs visible-sm pull-right col-xs-12" href="#"> Pesquisar<span class="fa fa-fw fa-search"></span></a>
+                                        <a class="btn btn-success btn-lg searchBtn hidden-xs hidden-sm pull-left" href="#" onclick="searchByDate();"><span class="fa fa-fw fa-search"></span></a>
+                                        <a class="btn btn-success btn-lg searchBtn visible-xs visible-sm pull-right col-xs-12" href="#" onclick="searchByDate();"> Pesquisar<span class="fa fa-fw fa-search"></span></a>
                                     </div>
                                 </fieldset> 
                             </form>
+                            <div id="search-results">
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -53,7 +53,7 @@ $dao = new Dao();
 //
 //$dao->save($runner);
 
-$params['id'] = 1;
+//$params['id'] = 1;
 
 //$s = Queries_Builders::get_runs_by_runner_id_builder()['select'];
 //echo $s;
@@ -98,12 +98,21 @@ $params['id'] = 1;
 //var_dump($run);
 
 
-$t = TimeFunctions::secondsToTime(3600);
+//$t = TimeFunctions::secondsToTime(3600);
+//
+//var_dump($t);
+//
+//echo '<br><br><br>';
+//
+//$t = TimeFunctions::secondsToHoursMinutesSeconds(1000000);
+//
+//var_dump($t);
 
-var_dump($t);
+$params['date'] = '2015-01-08';
+$runs = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUNS_BY_DATE, $params);
 
-echo '<br><br><br>';
+var_dump($runs);
 
-$t = TimeFunctions::secondsToHoursMinutesSeconds(1000000);
+$date = date_create_from_format('Y-m-d', '08/01/2015');
 
-var_dump($t);
+var_dump($date);
