@@ -5,6 +5,12 @@ require_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Corrida/vendor/auto
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NoResultException;
+//require_once '../../DoctrineExtensions/Query/Mysql/Binary.php';
+$classLoader = new \Doctrine\Common\ClassLoader('DoctrineExtensions', "../../DoctrineExtensions/Query/Mysql/Binary.php");
+$classLoader->register();
+
+use DoctrineExtensions\Query\Mysql\Binary;
+
 
 class Dao {
 
@@ -184,6 +190,8 @@ class Dao {
 
     public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
         try {
+//            $binary = new Binary($queryInstruction);
+            
             $query = $this->em->createQuery($queryInstruction);
             $query->setParameters($params);
             return $query->getSingleResult();

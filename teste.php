@@ -4,6 +4,7 @@ require_once './src/app//model/persistence/Dao.class.php';
 require_once './src/app/util/Queries.php';
 require_once './src/app/util/Queries_Builders.php';
 require_once './src/app/util/TimeFunctions.php';
+require_once './src/app/util/EncryptPassword.php';
 
 setlocale(LC_ALL, 'pt_BR', 'pt_BR.iso-8859-1', 'pt_BR.utf-8', 'portuguese');
 
@@ -52,9 +53,7 @@ $dao = new Dao();
 //$runner->setName('Fernando de Oliveira Ferreira');
 //
 //$dao->save($runner);
-
 //$params['id'] = 1;
-
 //$s = Queries_Builders::get_runs_by_runner_id_builder()['select'];
 //echo $s;
 //$ss = array_map('trim', explode(',', $s));
@@ -85,9 +84,6 @@ $dao = new Dao();
 //$summary = $dao->getListResultOfQueryBuilderWithParameters(Queries_Builders::get_runs_summary(), $params);
 //
 //var_dump($summary);
-
-
-
 //$params1['runid'] = 17;
 //$params1['runnerid'] = 1;
 //
@@ -96,8 +92,6 @@ $dao = new Dao();
 //$run = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUN_BY_RUNNER_ID_RUN_ID, $params1);
 //
 //var_dump($run);
-
-
 //$t = TimeFunctions::secondsToTime(3600);
 //
 //var_dump($t);
@@ -107,12 +101,22 @@ $dao = new Dao();
 //$t = TimeFunctions::secondsToHoursMinutesSeconds(1000000);
 //
 //var_dump($t);
+//$params['date'] = '2015-01-08';
+//$runs = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUNS_BY_DATE, $params);
+//
+//var_dump($runs);
+//
+//$date = date_create_from_format('Y-m-d', '08/01/2015');
+//
+//var_dump($date);
 
-$params['date'] = '2015-01-08';
-$runs = $dao->getListResultOfNamedQueryWithParameters(Queries::GET_RUNS_BY_DATE, $params);
+$params['email'] = 'fernandodof@gmail.com';
+$params['password'] = '12tir.zIbWQ3c';
 
-var_dump($runs);
+$runner = $dao->getArrayResultOfNativeQueryWithParameters(Queries::LOGIN_WITH_EMAIl, $params);
 
-$date = date_create_from_format('Y-m-d', '08/01/2015');
+var_dump($runner);
 
-var_dump($date);
+
+echo EncryptPassword::encrypt('abcabC').'<br>';
+echo EncryptPassword::encrypt('abcabc');

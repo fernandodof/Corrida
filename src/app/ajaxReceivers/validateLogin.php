@@ -16,7 +16,7 @@ switch (filter_input(INPUT_POST, 'type')) {
         $isValid = true;
         if (isEmail($emailLogin)) {
             $params['email'] = $emailLogin;
-            $runner = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_WITH_EMAIl, $params);
+            $runner = $dao->getArrayResultOfNativeQueryWithParameters(Queries::LOGIN_WITH_EMAIl, $params);
         } else {
             $params['login'] = $emailLogin;
             $runner = $dao->getSingleResultOfNamedQueryWithParameters(Queries::LOGIN_WITH_LOGIN, $params);
@@ -28,10 +28,10 @@ switch (filter_input(INPUT_POST, 'type')) {
             session_start();
             session_destroy();
             session_start();
-            $_SESSION['id'] = $runner->getId();
-            $_SESSION['name'] = $runner->getName();
-            $_SESSION['login'] = $runner->getLogin();
-            $_SESSION['email'] = $runner->getEmail();
+            $_SESSION['id'] = $runner['id'];
+            $_SESSION['name'] = $runner['name'];
+            $_SESSION['login'] = $runner['login'];
+            $_SESSION['email'] = $runner['email'];
         }
         echo $isValid;
         break;

@@ -7,10 +7,6 @@
  */
 class Queries {
 
-    const LOGIN_WITH_EMAIl = 'SELECT r FROM runner r WHERE r.email = :email AND r.password = :password';
-    
-    const LOGIN_WITH_LOGIN = 'SELECT r FROM runner r WHERE r.login = :login AND r.password = :password';
-
     const CHECK_LOGIN_EXISTS = 'SELECT count(r.login) as count FROM runner r WHERE r.login LIKE :login';
     
     const CHECK_EMAIL_EXISTS = 'SELECT count(r.email) as count FROM runner r WHERE r.email LIKE :email';
@@ -27,5 +23,14 @@ class Queries {
     //Native Queries
     const GET_RUNS_BY_RUNNER_ID_NATIVE  = 'SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner_id = :id';
     
+//    const CHECK_LOGIN_EXISTS = 'SELECT count(r.login) as count FROM runner r WHERE r.login LIKE :login';
+//    
+//    const CHECK_EMAIL_EXISTS = 'SELECT count(r.email) as count FROM runner r WHERE r.email LIKE :email';
+    
+    const GET_CURRENT_PASS = 'SELECT r.password as pass FROM runner r WHERE r.id = :id';
 
+    const LOGIN_WITH_EMAIl = 'SELECT r.id, r.email, r.login, r.name FROM runner r WHERE r.email = :email AND BINARY r.password = :password';
+    
+    const LOGIN_WITH_LOGIN = 'SELECT r.id, r.email, r.login, r.name FROM runner r WHERE r.login = :login AND BINARY r.password = :password';
+    
 }

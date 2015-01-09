@@ -37,7 +37,7 @@
                         <a href="search"><i class="fa fa-fw fa-search"></i> Pesquisar</a>
                     </li>
                     <li class='menu-option'id="fourth-option" >
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Cadastro</a>
+                        <a href="profile"><i class="fa fa-fw fa-user"></i> Cadastro</a>
                     </li>
                     <li class='menu-option' id="fifth-option">
                         <a href="../pages/logout"><i class="fa fw fa-power-off red-icon"></i> Sair</a>
