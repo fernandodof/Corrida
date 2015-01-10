@@ -114,63 +114,41 @@ form.login input:-moz-placeholder {
     padding: 20px 15px;
 }
 
+.pass-reset #email, #requestRecover{
+    width: 92%;
+}
 
-@media only screen and (min-width : 320px) {
+@media only screen and (min-width : 350px) {
     .pass-reset{
         margin-top: 255px;
     }
-}
 
-/* Extra Small Devices, Phones */ 
-/*@media only screen and (min-width : 480px) {
-    .pass-reset{
-        margin-top: 265px;
+    .wrap{
+        margin-left: -15px;
     }
-}
 
- Small Devices, Tablets 
-@media only screen and (min-width : 768px) {
-    .pass-reset{
-        margin-top: 285px;
+    .pr-wrap{
+        margin-left: -15px;
     }
-}
-
- Medium Devices, Desktops 
-@media only screen and (min-width : 992px) {
-    .pass-reset{
-        margin-top: 290px;
-    }
-}
-
- Large Devices, Wide Screens 
-@media only screen and (min-width : 1200px) {
-    .pass-reset{
-        margin-top: 300px;
-    }
-}*/
 
 
-.pass-reset label{
-    font-size: 12px;
-    font-weight: 400;
-    margin-bottom: 15px;
 }
 
 .pass-reset input[type="email"]{
-    width: 100%;
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-    background: 0;
-    border: 0;
-    border-bottom: 1px solid #000000;
-    outline: 0;
-    font-style: italic;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    color: #000000;
-    outline: 0;
+    /*    width: 100%;
+        margin: 5px 0 0 0;
+        padding: 5px 10px;
+        background: 0;
+        border: 0;
+        border-bottom: 1px solid #000000;
+        outline: 0;
+        font-style: italic;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+        color: #000000;
+        outline: 0;*/
 }
 
 .pass-reset button[type="submit"]{
@@ -205,7 +183,7 @@ form.login input:-moz-placeholder {
     display: none;
 }
 
-#loginLoader{
+#loginLoader, #loginLoader1{
     width: 21px;
     height: 21px;
     display: none;
@@ -213,4 +191,23 @@ form.login input:-moz-placeholder {
 
 .loginInfo{
     border-color: red;
+}
+
+.pr-wrap i{
+    margin-right: 30px;
+}
+
+.glyphicon-refresh-animate {
+    -animation: spin 1.2s infinite linear;
+    -webkit-animation: spin2 1.2s infinite linear;
+}
+
+@-webkit-keyframes spin2 {
+    from { -webkit-transform: rotate(0deg);}
+    to { -webkit-transform: rotate(360deg);}
+}
+
+@keyframes spin {
+    from { transform: scale(1) rotate(0deg);}
+    to { transform: scale(1) rotate(360deg);}
 }

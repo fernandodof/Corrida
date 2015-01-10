@@ -20,6 +20,11 @@ class Queries {
     const GET_RUNS_BY_DATE = 'SELECT r FROM run r WHERE r.date = :date AND r.runner = :runner_id ORDER BY r.id';
 
     const GET_RUN_BY_RUNNER_ID_RUN_ID = 'SELECT r FROM run r WHERE r.id = :runid AND r.runner = :runnerid';
+    
+    const UPDATE_RECOVERED_PASSWORD = 'UPDATE recoverPassword r SET r.used = true WHERE r.id = :id';
+    
+    const GET_RUNNER_BY_EMAIL = 'SELECT r FROM runner r WHERE r.email LIKE :email';
+
     //Native Queries
     const GET_RUNS_BY_RUNNER_ID_NATIVE  = 'SELECT r.date, r.distance, r.duration, r.avgSpeed, r.pace, r.notes, r.id FROM run r WHERE r.runner_id = :id';
     
@@ -33,4 +38,5 @@ class Queries {
     
     const LOGIN_WITH_LOGIN = 'SELECT r.id, r.email, r.login, r.name FROM runner r WHERE r.login = :login AND BINARY r.password = :password';
     
+    const GET_RUNNER_ID_CODE_BY_PASSWORD_CODE = 'SELECT r.id AS id, r.runner_id AS runner_id, r.code AS code FROM recuperarPassword r WHERE UNIX_TIMESTAMP(r.expiration) > UNIX_TIMESTAMP(CURRENT_TIMESTAMP) and r.used = false and r.code LIKE :code';   
 }

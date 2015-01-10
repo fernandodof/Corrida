@@ -17,16 +17,19 @@
                                     <a class="btn btn-default col-xs-6" id="forgortPass">Esqueci a Senha</a>
                                     <a class="btn btn-default col-xs-6" href="../pages/subscribe">Cadastrar-se</a>
                                 </div>
-
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="pr-wrap">
                     <div class="pass-reset">
-                        <label>Insira o email cadastrado</label>
-                        <input type="email" placeholder="Email" />
-                        <input type="submit" value="Recuperar Senha" class="pass-reset-submit btn btn-success btn-sm btn-block" />
+                        <form id="forgotPasswordForm" action="javascript:void(0)">
+                            <label>Insira o email cadastrado</label>
+                            <div class="form-group">
+                                <input type="email" id="email" class="form-control" name="email" placeholder="Email">
+                            </div> 
+                            <button id="requestRecover" type="submit" class="pass-reset-submit btn btn-success btn-sm btn-block">Recuperar senha<img src="../images/loader/loginLoader.gif" id="loginLoader1"></button>
+                        </form>
                     </div>
                 </div>
             </div>
