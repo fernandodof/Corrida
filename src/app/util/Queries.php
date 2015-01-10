@@ -38,5 +38,5 @@ class Queries {
     
     const LOGIN_WITH_LOGIN = 'SELECT r.id, r.email, r.login, r.name FROM runner r WHERE r.login = :login AND BINARY r.password = :password';
     
-    const GET_RUNNER_ID_CODE_BY_PASSWORD_CODE = 'SELECT r.id AS id, r.runner_id AS runner_id, r.code AS code FROM recuperarPassword r WHERE UNIX_TIMESTAMP(r.expiration) > UNIX_TIMESTAMP(CURRENT_TIMESTAMP) and r.used = false and r.code LIKE :code';   
+    const GET_RUNNER_ID_CODE_BY_PASSWORD_CODE = 'SELECT r.id AS id, r.runner_id AS runner_id, r.code AS code FROM recoverPassword r WHERE UNIX_TIMESTAMP(r.expiration) > UNIX_TIMESTAMP(CURRENT_TIMESTAMP) and r.used = false and r.code LIKE :code';   
 }
