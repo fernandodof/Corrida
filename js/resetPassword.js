@@ -5,7 +5,8 @@ function resetPassword() {
 
     var code = $('#code').val();
     var password = $('#password1').val();
-    var data = {codigo: code, password: password};
+    alert(code + ' ' +  password);
+    var data = {code: code, password: password};
     var url = templateRoot + 'src/app/ajaxReceivers/resetPassword.php';
     $.ajax({
         type: "POST",
@@ -35,7 +36,7 @@ $(document).ready(function () {
             validating: 'glyphicon glyphicon-refresh glyphicon-refresh-animate'
         },
         fields: {
-            pass1: {
+            password1: {
                 validators: {
                     notEmpty: {
                         message: 'A senha não pode ser vazia'
@@ -46,12 +47,12 @@ $(document).ready(function () {
                         message: 'A senha deve ter entre 6 e 30 caracteres'
                     },
                     identical: {
-                        field: 'pass2',
+                        field: 'password2',
                         message: 'As senhas são diferentes'
                     }
                 }
             },
-            pass2: {
+            password2: {
                 validators: {
                     notEmpty: {
                         message: 'A confirmação de senha não pode ser vazia'
@@ -62,7 +63,7 @@ $(document).ready(function () {
                         message: 'A senha deve ter entre 6 e 30 caracteres'
                     },
                     identical: {
-                        field: 'pass1',
+                        field: 'password1',
                         message: 'As senhas são diferentes'
                     }
                 }

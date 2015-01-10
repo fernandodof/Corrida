@@ -7,6 +7,7 @@
  */
 require_once 'PHPMailer-5.2.8/PHPMailerAutoload.php';
 require_once 'EmailMessages.php';
+require_once 'ChromePHP.php';
 
 class SendEmail {
 
@@ -24,13 +25,17 @@ class SendEmail {
         $this->mail->SMTPSecure = 'tls';
         $this->mail->Port = 587;
         $this->mail->CharSet = "UTF-8";
-        $this->mail->From = 'corridas.contato@gmail.com';
+        $this->mail->From = 'Corridas';
         $this->mail->FromName = 'Corridas';
-        $this->mail->addReplyTo('noreply@corridas.com', 'Corridas');
+        $this->mail->addReplyTo('corridas.contato@gmail.com', 'Corridas');
         $this->mail->isHTML();
     }
 
     public function sendPasswordRecoverEmail($personName, $link, $address) {
+        ChromePhp::log($personName);
+        ChromePhp::log($link);
+        ChromePhp::log($address);
+        
         $this->mail->Subject = $personName;
         $this->mail->Body = EmailMessages::recoverPasswordHTML($personName, $link);
         $this->mail->AltBody = EmailMessages::recoverPasswordNormal($personName, $link);
@@ -39,7 +44,7 @@ class SendEmail {
             echo 'Message could not be sent.';
             echo 'Mailer Error: ' . $this->mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            echo 'Em instantes você receberá um email com instruções para recuperar a senha';
         }
     }
 

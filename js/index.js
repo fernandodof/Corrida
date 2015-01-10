@@ -43,7 +43,7 @@ function requestPasswordRecovery() {
         async: true,
         data: data,
         success: function (serverResponse) {
-            alertify.alert('Em instantes você receberá um email com instruções para recuperar a senha');
+            alertify.alert(serverResponse);
             $('#loginLoader1').hide();
             $('#email').val('');
             $(".pr-wrap").toggleClass("show-pass-reset");
