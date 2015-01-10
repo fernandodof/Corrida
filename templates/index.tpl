@@ -35,5 +35,11 @@
             </div>
         </div>
     </div>
+    <div id="quote" class="col-md-6">
+        <blockquote>
+            <p><span class="fa fa-quote-left"></span> {$sentence->getSentence()} <span class="fa fa-quote-right"></span></p>
+            <footer>{$sentence->getAuthor()}</footer>
+        </blockquote>
+    </div>
 </body>
 </html>

@@ -166,32 +166,8 @@ class Dao {
         return $query->getQuery()->getArrayResult();
     }
 
-//    public function getListResultOfQueryBuilderWithParametersOberByAndLimit($qbArray, $params, $orderBy, $start, $amount = 10) {
-//
-//        $query1 = new Doctrine\ORM\QueryBuilder($this->em);
-//
-//        $select = $qbArray['select'];
-//        $query1->select($select);
-//        foreach ($qbArray['from'] as $key => $value) {
-//            $query1->from($key, $value);
-//        }
-//
-//        $query1->where($qbArray['where']);
-//
-//        foreach ($params as $key => $value) {
-//            $query1->setParameter($key, $value);
-//        }
-//        
-//         
-//        $query1->setFirstResult($start)->setMaxResults($amount);
-//
-//        return $query1->getQuery()->getArrayResult();
-//    }
-
     public function getSingleResultOfNamedQueryWithParameters($queryInstruction, $params) {
         try {
-//            $binary = new Binary($queryInstruction);
-            
             $query = $this->em->createQuery($queryInstruction);
             $query->setParameters($params);
             return $query->getSingleResult();
@@ -227,6 +203,12 @@ class Dao {
     public function getArrayResultOfNativeQueryWithParameters($queryInstruction, $params) {
         $stmt = $this->em->getConnection()->prepare($queryInstruction);
         $stmt->execute($params);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function getArrayResultOfNativeQuery($queryInstruction) {
+        $stmt = $this->em->getConnection()->prepare($queryInstruction);
+        $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 

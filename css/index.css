@@ -211,3 +211,24 @@ form.login input:-moz-placeholder {
     from { transform: scale(1) rotate(0deg);}
     to { transform: scale(1) rotate(360deg);}
 }
+
+#quote{
+    position: absolute;
+    /* Set the fixed height of the footer here */
+/*    height: 40px;*/
+    margin-bottom: 0px;
+    margin-top: 40px;
+    bottom: 0;
+}
+
+#quote p{
+    color: white;
+}
+
+#quote p span{
+    color: #BCC6CC;
+}
+
+#quote footer{
+    color: #B6B6B4;
+}
